@@ -21,13 +21,25 @@ export type Properties = {
 
 export type inferPropertyFromSchema<S extends Schema> = {
   [Property in PropertyKeys]: {
-    [Field in keyof S[Property] as true extends IsRequired<S[Property][Field]>
+    [Field in keyof S[Property] as true extends (
+      S[Property][Field] extends ItemType
+        ? IsRequired<S[Property][Field]>
+        : never
+    )
       ? Field
-      : never]: inferFieldType<S[Property][Field]>;
+      : never]: S[Property][Field] extends ItemType
+      ? inferFieldType<S[Property][Field]>
+      : never;
   } & {
-    [Field in keyof S[Property] as true extends IsRequired<S[Property][Field]>
+    [Field in keyof S[Property] as true extends (
+      S[Property][Field] extends ItemType
+        ? IsRequired<S[Property][Field]>
+        : never
+    )
       ? never
-      : Field]?: inferFieldType<S[Property][Field]>;
+      : Field]?: S[Property][Field] extends ItemType
+      ? inferFieldType<S[Property][Field]>
+      : never;
   };
 };
 

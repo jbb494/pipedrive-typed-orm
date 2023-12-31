@@ -1,5 +1,4 @@
-import { Properties } from "./properties";
-import { ItemType, PropertyKeys, Schema } from "./schema";
+import { ItemType } from "./schema";
 
 export type IsEmptyObject<T> = keyof T extends never ? true : false;
 

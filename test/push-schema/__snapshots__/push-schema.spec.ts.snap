@@ -1,0 +1,843 @@
+// Bun Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Push schema Testing fields Should push the date schema to pipedrive 1`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "date",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "date",
+    "projects_detail_visible_flag": false,
+    "searchable_flag": true,
+    "show_in_pipelines": {
+      "pipeline_ids": [],
+      "show_in_all": true,
+    },
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the date schema to pipedrive 2`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "date",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "date",
+    "searchable_flag": true,
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the double schema to pipedrive 1`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "double",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "double",
+    "projects_detail_visible_flag": false,
+    "searchable_flag": true,
+    "show_in_pipelines": {
+      "pipeline_ids": [],
+      "show_in_all": true,
+    },
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the double schema to pipedrive 2`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "double",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "double",
+    "searchable_flag": true,
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the enum schema to pipedrive 1`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "enum",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "enum",
+    "options": [
+      {
+        "label": "A",
+      },
+      {
+        "label": "B",
+      },
+    ],
+    "projects_detail_visible_flag": false,
+    "searchable_flag": true,
+    "show_in_pipelines": {
+      "pipeline_ids": [],
+      "show_in_all": true,
+    },
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the enum schema to pipedrive 2`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "enum",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "enum",
+    "options": [
+      {
+        "label": "A",
+      },
+      {
+        "label": "B",
+      },
+    ],
+    "searchable_flag": true,
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the monetary schema to pipedrive 1`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "monetary",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "monetary",
+    "projects_detail_visible_flag": false,
+    "searchable_flag": true,
+    "show_in_pipelines": {
+      "pipeline_ids": [],
+      "show_in_all": true,
+    },
+    "sortable_flag": true,
+    "update_time": null,
+  },
+  {
+    "active_flag": true,
+    "edit_flag": true,
+    "field_type": "varchar",
+    "id_suffix": "currency",
+    "is_subfield": true,
+    "mandatory_flag": false,
+    "name": "Currency of monetary",
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the monetary schema to pipedrive 2`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "monetary",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "monetary",
+    "searchable_flag": true,
+    "sortable_flag": true,
+    "update_time": null,
+  },
+  {
+    "active_flag": true,
+    "edit_flag": true,
+    "field_type": "varchar",
+    "id_suffix": "currency",
+    "is_subfield": true,
+    "mandatory_flag": false,
+    "name": "Currency of monetary",
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the phone schema to pipedrive 1`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "phone",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "phone",
+    "projects_detail_visible_flag": false,
+    "searchable_flag": true,
+    "show_in_pipelines": {
+      "pipeline_ids": [],
+      "show_in_all": true,
+    },
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the phone schema to pipedrive 2`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "phone",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "phone",
+    "searchable_flag": true,
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the set schema to pipedrive 1`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "set",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "set",
+    "options": [
+      {
+        "label": "A",
+      },
+      {
+        "label": "B",
+      },
+    ],
+    "projects_detail_visible_flag": false,
+    "searchable_flag": true,
+    "show_in_pipelines": {
+      "pipeline_ids": [],
+      "show_in_all": true,
+    },
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the set schema to pipedrive 2`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "set",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "set",
+    "options": [
+      {
+        "label": "A",
+      },
+      {
+        "label": "B",
+      },
+    ],
+    "searchable_flag": true,
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the text schema to pipedrive 1`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "text",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "text",
+    "projects_detail_visible_flag": false,
+    "searchable_flag": true,
+    "show_in_pipelines": {
+      "pipeline_ids": [],
+      "show_in_all": true,
+    },
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the text schema to pipedrive 2`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "text",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "text",
+    "searchable_flag": true,
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the date schema to pipedrive (add one field to person and to lead) 1`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "date",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "date",
+    "projects_detail_visible_flag": false,
+    "searchable_flag": true,
+    "show_in_pipelines": {
+      "pipeline_ids": [],
+      "show_in_all": true,
+    },
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the date schema to pipedrive (add one field to person and to lead) 2`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "date",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "date",
+    "searchable_flag": true,
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the double schema to pipedrive (add one field to person and to lead) 1`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "double",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "double",
+    "projects_detail_visible_flag": false,
+    "searchable_flag": true,
+    "show_in_pipelines": {
+      "pipeline_ids": [],
+      "show_in_all": true,
+    },
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the double schema to pipedrive (add one field to person and to lead) 2`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "double",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "double",
+    "searchable_flag": true,
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the enum schema to pipedrive (add one field to person and to lead) 1`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "enum",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "enum",
+    "options": [
+      {
+        "label": "A",
+      },
+      {
+        "label": "B",
+      },
+    ],
+    "projects_detail_visible_flag": false,
+    "searchable_flag": true,
+    "show_in_pipelines": {
+      "pipeline_ids": [],
+      "show_in_all": true,
+    },
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the enum schema to pipedrive (add one field to person and to lead) 2`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "enum",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "enum",
+    "options": [
+      {
+        "label": "A",
+      },
+      {
+        "label": "B",
+      },
+    ],
+    "searchable_flag": true,
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the monetary schema to pipedrive (add one field to person and to lead) 1`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "monetary",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "monetary",
+    "projects_detail_visible_flag": false,
+    "searchable_flag": true,
+    "show_in_pipelines": {
+      "pipeline_ids": [],
+      "show_in_all": true,
+    },
+    "sortable_flag": true,
+    "update_time": null,
+  },
+  {
+    "active_flag": true,
+    "edit_flag": true,
+    "field_type": "varchar",
+    "id_suffix": "currency",
+    "is_subfield": true,
+    "mandatory_flag": false,
+    "name": "Currency of monetary",
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the monetary schema to pipedrive (add one field to person and to lead) 2`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "monetary",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "monetary",
+    "searchable_flag": true,
+    "sortable_flag": true,
+    "update_time": null,
+  },
+  {
+    "active_flag": true,
+    "edit_flag": true,
+    "field_type": "varchar",
+    "id_suffix": "currency",
+    "is_subfield": true,
+    "mandatory_flag": false,
+    "name": "Currency of monetary",
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the phone schema to pipedrive (add one field to person and to lead) 1`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "phone",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "phone",
+    "projects_detail_visible_flag": false,
+    "searchable_flag": true,
+    "show_in_pipelines": {
+      "pipeline_ids": [],
+      "show_in_all": true,
+    },
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the phone schema to pipedrive (add one field to person and to lead) 2`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "phone",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "phone",
+    "searchable_flag": true,
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the set schema to pipedrive (add one field to person and to lead) 1`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "set",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "set",
+    "options": [
+      {
+        "label": "A",
+      },
+      {
+        "label": "B",
+      },
+    ],
+    "projects_detail_visible_flag": false,
+    "searchable_flag": true,
+    "show_in_pipelines": {
+      "pipeline_ids": [],
+      "show_in_all": true,
+    },
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the set schema to pipedrive (add one field to person and to lead) 2`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "set",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "set",
+    "options": [
+      {
+        "label": "A",
+      },
+      {
+        "label": "B",
+      },
+    ],
+    "searchable_flag": true,
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the text schema to pipedrive (add one field to person and to lead) 1`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "text",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "text",
+    "projects_detail_visible_flag": false,
+    "searchable_flag": true,
+    "show_in_pipelines": {
+      "pipeline_ids": [],
+      "show_in_all": true,
+    },
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;
+
+exports[`Push schema Testing fields Should push the text schema to pipedrive (add one field to person and to lead) 2`] = `
+[
+  {
+    "active_flag": true,
+    "add_visible_flag": false,
+    "bulk_edit_allowed": true,
+    "description": null,
+    "details_visible_flag": true,
+    "edit_flag": true,
+    "field_type": "text",
+    "filtering_allowed": true,
+    "group_id": null,
+    "important_flag": false,
+    "json_column_flag": true,
+    "last_updated_by_user_id": 19039577,
+    "mandatory_flag": false,
+    "name": "text",
+    "searchable_flag": true,
+    "sortable_flag": true,
+    "update_time": null,
+  },
+]
+`;

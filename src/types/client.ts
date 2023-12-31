@@ -1,4 +1,4 @@
-import { AsyncResult } from "ga-ts";
+import { Result } from "ga-ts";
 import {
   BaseProperties,
   Properties,
@@ -12,7 +12,7 @@ export type PipedriveOrmClient<
   CustomProperties extends Properties = inferPropertyFromSchema<CustomSchema>,
   CompleteSchema = PropertiesBuilder<BaseProperties, CustomProperties>
 > = {
-  [P in Extract<keyof CompleteSchema, string> as `post${P}`]: (
+  [P in Extract<keyof CompleteSchema, string> as `post${Capitalize<P>}`]: (
     p: CompleteSchema[P]
-  ) => AsyncResult<void, Error>;
+  ) => Promise<Result<void, Error>>;
 };

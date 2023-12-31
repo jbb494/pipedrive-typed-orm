@@ -1,6 +1,2 @@
-export type {
-  BaseFieldsSchema,
-  PipedriveOrmClient,
-  SchemaBuilder,
-} from "./types";
-export { createPipedriveOrmClient } from "./client";
+export type { BaseFieldsSchema, PipedriveOrmClient } from "./types";
+export { createPipedriveOrmClient } from "./client/client";

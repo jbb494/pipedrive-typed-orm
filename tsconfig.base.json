@@ -1,5 +1,5 @@
 {
-  "include": ["./src", "./test"],
+  "include": ["./src", "./test", "./scripts"],
   "compilerOptions": {
     "isolatedModules": true,
     "lib": ["ES2019"] /* Emit ECMAScript-standard-compliant class fields. */,
@@ -13,6 +13,10 @@
     "forceConsistentCasingInFileNames": true,
     "allowJs": false,
     "baseUrl": ".",
-    "types": ["bun-types"]
+    "types": ["bun-types"],
+    "sourceMap": true,
+    "paths": {
+      "scripts/*": ["./scripts/*"]
+    }
   }
 }

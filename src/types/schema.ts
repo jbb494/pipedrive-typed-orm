@@ -11,21 +11,18 @@ export type ItemType<Options = readonly string[]> = (
       field_type: "double";
     }
   | {
-      field_type: "boolean";
-    }
-  | {
       field_type: "date";
     }
   | {
-      field_type: "value-object";
+      field_type: "monetary";
     }
   | {
       field_type: "enum";
       options: Options;
     }
   | {
-      field_type: "array";
-      elem_type: "text";
+      field_type: "set";
+      options: Options;
     }
 ) & { required?: boolean };
 
@@ -42,15 +39,13 @@ export const BaseFieldsSchema = {
     owner_id: {
       field_type: "double",
     },
-    label_ids: { field_type: "array", elem_type: "text" },
     person_id: { field_type: "double" },
     organization_id: { field_type: "double" },
     value: {
-      field_type: "value-object",
-    } /* { amount: number; currency: "USD" | "EUR" } */,
+      field_type: "monetary",
+    },
     expected_close_date: { field_type: "date" },
     visible_to: { field_type: "text" },
-    was_seen: { field_type: "boolean" },
   },
   person: {
     name: { field_type: "text" },
@@ -76,20 +71,16 @@ export type inferFieldType<T extends ItemType> = T extends {
     }
   ? Date
   : T extends {
-      field_type: "boolean";
-    }
-  ? boolean
-  : T extends {
-      field_type: "value-object";
+      field_type: "monetary";
     }
   ? { amount: number; currency: "USD" | "EUR" }
   : T extends { field_type: "enum"; options: infer Options }
   ? Options extends readonly string[]
     ? Options[number]
     : never
-  : T extends { field_type: "array"; elem_type: infer ElemType }
-  ? ElemType extends "text"
-    ? inferFieldType<{ field_type: ElemType }>
+  : T extends { field_type: "set"; options: infer Options }
+  ? Options extends readonly string[]
+    ? Options[number]
     : never
   : never;
 
