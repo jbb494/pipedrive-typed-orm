@@ -1,5 +1,7 @@
 import * as R from "ramda";
 import { pushToPipedrive } from "src/push-schema";
+import { Schema } from "src/types";
+import { emptySchema } from "./schemas";
 
 export const removeDynamicFieldsBase = R.pickBy(
   (_value, key) =>
@@ -16,11 +18,6 @@ export const removeDynamicFields = R.compose(
   (object) => (object.options ? removeDynamicFieldsFromOptions(object) : object)
 );
 
-export const pushSchemaToPipedrive = async (schemaName: string) => {
-  process.env.SCHEMA_PATH = `${import.meta.dir}/schemas/${schemaName}.ts`;
-  return await pushToPipedrive();
-};
-
 export const removeAllCustomFieldsPipedrive = async () => {
-  return pushSchemaToPipedrive("empty-schema");
+  return pushToPipedrive(emptySchema);
 };

@@ -1,6 +1,6 @@
 import { Schema } from "src/types";
 
-export default {
+export const textSchema = {
   lead: {
     text: {
       field_type: "text",

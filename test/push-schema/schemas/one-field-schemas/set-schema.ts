@@ -1,15 +1,15 @@
 import { Schema } from "src/types";
 
-export default {
+export const setSchema = {
   lead: {
-    enum: {
-      field_type: "enum",
+    set: {
+      field_type: "set",
       options: ["A", "B"],
     },
   },
   person: {
-    enum: {
-      field_type: "enum",
+    set: {
+      field_type: "set",
       options: ["A", "B"],
     },
   },

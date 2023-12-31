@@ -1,6 +1,6 @@
 import { Schema } from "src/types";
 
-export default {
+export const dateSchema = {
   lead: {
     date: {
       field_type: "date",

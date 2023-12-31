@@ -77,12 +77,7 @@ const overWriteProperty = async (
   return Ok({ added: addedFields.length, removed: removedFields.length });
 };
 
-export const pushToPipedrive = async () => {
-  if (!process.env.SCHEMA_PATH)
-    throw new Error("Env variable SCHEMA_PATH not defined");
-
-  const { default: schemaOverwrite } = require(process.env.SCHEMA_PATH);
-
+export const pushToPipedrive = async (schemaOverwrite: any) => {
   const resultLead = await overWriteProperty(
     schemaOverwrite.lead,
     "dealFields"

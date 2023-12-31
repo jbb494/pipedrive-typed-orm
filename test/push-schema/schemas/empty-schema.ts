@@ -1,6 +1,6 @@
 import { Schema } from "src/types";
 
-export default {
+export const emptySchema = {
   lead: {},
   person: {},
 } satisfies Schema;

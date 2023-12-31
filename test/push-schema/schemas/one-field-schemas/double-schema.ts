@@ -1,6 +1,6 @@
 import { Schema } from "src/types";
 
-export default {
+export const doubleSchema = {
   lead: {
     double: {
       field_type: "double",

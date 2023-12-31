@@ -7,11 +7,13 @@ describe("client", () => {
   const instance: AxiosInstance = axios.create({
     baseURL: process.env.PIPEDRIVE_URL,
   });
+  instance.defaults.params = {};
+  instance.defaults.params["api-key"] = process.env.PIPEDRIVE_KEY;
+
   const config = { axiosInstance: instance } satisfies PipedriveOrmClientConfig;
 
   describe("Client with empty custom properties", () => {
     let client: PipedriveOrmClient<{}>;
-    let fetchMock: Mock<() => Promise<any>>;
 
     beforeAll(() => {
       client = createPipedriveOrmClient({}, config);
