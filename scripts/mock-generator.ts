@@ -1,9 +1,11 @@
 import axios, { AxiosInstance } from "axios";
 import { pushToPipedrive } from "src/push-schema";
-import { complexSchemas } from "test/push-schema/schemas";
+import { complexSchemas, emptySchema } from "test/push-schema/schemas";
+import * as R from "ramda";
+import fs from "fs";
 
 const mockGenerator = async () => {
-  const mockPath = "test/mock";
+  const MOCK_PATH = "test/mock";
   const instance: AxiosInstance = axios.create({
     baseURL: process.env.PIPEDRIVE_URL,
     headers: {
@@ -13,23 +15,32 @@ const mockGenerator = async () => {
   instance.defaults.params = {};
   instance.defaults.params["api_token"] = process.env.PIPEDRIVE_KEY;
 
-  /* The idea is
-  
-  first we push a schema to pipedrive
-  then we get dealFields y personFields
-  we save them to test/mock/schema-name.json
-  
-  */
-
-  for (const [key, schema] of Object.entries(complexSchemas)) {
+  const pickData = R.pick(["data"]);
+  const endpointsToMock = ["dealFields", "personFields"];
+  for (const [schemaName, schema] of Object.entries(complexSchemas)) {
     const result = await pushToPipedrive(schema);
     if (!result.ok)
-      throw new Error(`Error pushing schema on schema: ${key}`, {
+      throw new Error(`Error pushing schema on schema: ${schemaName}`, {
         cause: result.value,
       });
 
-    const response = await instance.get("/dealFields");
-    console.log({ response });
+    for (const endpoint of endpointsToMock) {
+      const response = await instance.get(`/${endpoint}`);
+      if (!fs.existsSync(`${MOCK_PATH}/${schemaName}`)) {
+        fs.mkdirSync(`${MOCK_PATH}/${schemaName}`, { recursive: true });
+      }
+
+      fs.writeFileSync(
+        `${MOCK_PATH}/${schemaName}/${endpoint}.json`,
+        JSON.stringify(pickData(response), null, 2)
+      );
+    }
+
+    const pushToEmptySchemaResult = await pushToPipedrive(emptySchema);
+    if (!pushToEmptySchemaResult.ok)
+      throw new Error(`Error pushing schema on schema: ${schemaName}`, {
+        cause: result.value,
+      });
   }
 };
 

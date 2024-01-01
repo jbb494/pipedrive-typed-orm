@@ -14,7 +14,7 @@ export const scenarioBSchema = {
     },
   },
   person: {
-    birtday: {
+    birthday: {
       field_type: "date",
     },
   },
