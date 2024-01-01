@@ -17,6 +17,7 @@ export const scenarioASchema = {
   person: {
     partnerName: {
       field_type: "text",
+      required: true,
     },
     partnerAge: {
       field_type: "double",

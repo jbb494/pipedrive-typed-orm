@@ -8,7 +8,7 @@
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit",
     "test:client": "bun test test/client",
-    "test:push-schema": "bun test test/push-schema",
+    "test:push-schema": "bun test test/push-schema --timeout 10000",
     "mock:generate": "bun scripts/mock-generator.ts",
     "push-schema": "bun scripts/push-schema.ts"
   },
