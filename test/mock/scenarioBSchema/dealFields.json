@@ -994,14 +994,14 @@
         "mandatory_flag": true
       },
       {
-        "id": 240,
-        "key": "b1c6a2fb2c8a6dda9fd7277a289f21ca817204a2",
+        "id": 247,
+        "key": "ee0fe67d2510684360a1f413f26b493676a97c1c",
         "name": "numItems",
         "group_id": null,
-        "order_nr": 207,
+        "order_nr": 214,
         "field_type": "double",
         "json_column_flag": true,
-        "add_time": "2024-01-01 10:40:49",
+        "add_time": "2024-01-01 11:46:07",
         "update_time": null,
         "last_updated_by_user_id": 19039577,
         "edit_flag": true,
@@ -1022,14 +1022,14 @@
         "mandatory_flag": false
       },
       {
-        "id": 241,
-        "key": "45aac3b10565870e069f6c6127ae6592c2487148",
+        "id": 248,
+        "key": "8e7c3e8b0c20af7a30a8c063633ff53225d95f92",
         "name": "inSale",
         "group_id": null,
-        "order_nr": 208,
+        "order_nr": 215,
         "field_type": "enum",
         "json_column_flag": true,
-        "add_time": "2024-01-01 10:40:50",
+        "add_time": "2024-01-01 11:46:08",
         "update_time": null,
         "last_updated_by_user_id": 19039577,
         "edit_flag": true,
@@ -1049,25 +1049,25 @@
         },
         "options": [
           {
-            "id": 189,
+            "id": 197,
             "label": "True"
           },
           {
-            "id": 190,
+            "id": 198,
             "label": "False"
           }
         ],
         "mandatory_flag": false
       },
       {
-        "id": 242,
-        "key": "401befc947c59aa4b9a1356081e4b719cd099e80",
+        "id": 249,
+        "key": "9fdc8def79d29d19e7bc2857026f92f69b31cef9",
         "name": "amountDiscount",
         "group_id": null,
-        "order_nr": 209,
+        "order_nr": 216,
         "field_type": "double",
         "json_column_flag": true,
-        "add_time": "2024-01-01 10:40:50",
+        "add_time": "2024-01-01 11:46:08",
         "update_time": null,
         "last_updated_by_user_id": 19039577,
         "edit_flag": true,

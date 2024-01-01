@@ -1,0 +1,38 @@
+// Bun Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`client Client with scenarioA should post lead no custom fields 1`] = `
+[
+  "lead",
+  {
+    "person_id": 1256,
+    "title": "Title lead",
+  },
+]
+`;
+
+exports[`client Client with scenarioA should post lead with custom fields 1`] = `
+[
+  "lead",
+  {
+    "859d31b30d784df404a530f1d3e2d4e5d9f328f8": [
+      194,
+      196,
+    ],
+    "8aa23ca40129abb365dcf2c6173adcb6641c65a5": 191,
+    "person_id": 1256,
+    "title": "Title lead",
+  },
+]
+`;
+
+exports[`client Client with scenarioA should post person with custom fields 1`] = `
+[
+  "person",
+  {
+    "e23789250642b3b8c14418c8206632da669d6e6d": "whatever",
+    "email": "whatever@whatever.es",
+    "fc2809594666e08b48663e17c8c668e53353b7d6": 2,
+    "name": "Whatever",
+  },
+]
+`;

@@ -80,7 +80,7 @@ export type inferFieldType<T extends ItemType> = T extends {
     : never
   : T extends { field_type: "set"; options: infer Options }
   ? Options extends readonly string[]
-    ? Options[number]
+    ? Options[number][]
     : never
   : never;
 

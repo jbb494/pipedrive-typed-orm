@@ -9,7 +9,7 @@
       "internalConsoleOptions": "neverOpen",
       "request": "launch",
       "name": "Debug tests",
-      "args": ["test", "test"],
+      "args": ["test"],
       "cwd": "${workspaceFolder}",
       "program": "${file}",
       "stopOnEntry": false,

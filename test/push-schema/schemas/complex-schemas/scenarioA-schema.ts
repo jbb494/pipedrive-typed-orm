@@ -19,7 +19,7 @@ export const scenarioASchema = {
       field_type: "text",
     },
     partnerAge: {
-      field_type: "text",
+      field_type: "double",
     },
   },
-} satisfies Schema;
+} as const satisfies Schema;

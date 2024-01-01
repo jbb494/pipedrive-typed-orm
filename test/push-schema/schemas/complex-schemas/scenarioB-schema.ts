@@ -18,4 +18,4 @@ export const scenarioBSchema = {
       field_type: "date",
     },
   },
-} satisfies Schema;
+} as const satisfies Schema;

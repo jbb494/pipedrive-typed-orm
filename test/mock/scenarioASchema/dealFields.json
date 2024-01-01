@@ -994,14 +994,14 @@
         "mandatory_flag": true
       },
       {
-        "id": 237,
-        "key": "0f258b0bde2ec786d1866f6a5f029c3adf11b080",
+        "id": 244,
+        "key": "0b4e860b87fa13d53d6a5c0db3565af160832855",
         "name": "campaign",
         "group_id": null,
-        "order_nr": 204,
+        "order_nr": 211,
         "field_type": "text",
         "json_column_flag": true,
-        "add_time": "2024-01-01 10:40:39",
+        "add_time": "2024-01-01 11:45:59",
         "update_time": null,
         "last_updated_by_user_id": 19039577,
         "edit_flag": true,
@@ -1022,14 +1022,14 @@
         "mandatory_flag": false
       },
       {
-        "id": 238,
-        "key": "ce21adfa4ec46affcd7a7284cb37cf630755b3d0",
+        "id": 245,
+        "key": "8aa23ca40129abb365dcf2c6173adcb6641c65a5",
         "name": "carMake",
         "group_id": null,
-        "order_nr": 205,
+        "order_nr": 212,
         "field_type": "enum",
         "json_column_flag": true,
-        "add_time": "2024-01-01 10:40:40",
+        "add_time": "2024-01-01 11:46:00",
         "update_time": null,
         "last_updated_by_user_id": 19039577,
         "edit_flag": true,
@@ -1049,29 +1049,29 @@
         },
         "options": [
           {
-            "id": 183,
+            "id": 191,
             "label": "bmw"
           },
           {
-            "id": 184,
+            "id": 192,
             "label": "seat"
           },
           {
-            "id": 185,
+            "id": 193,
             "label": "ferrari"
           }
         ],
         "mandatory_flag": false
       },
       {
-        "id": 239,
-        "key": "935fc6fced8760a5789a494d5f68bf2600b3efc1",
+        "id": 246,
+        "key": "859d31b30d784df404a530f1d3e2d4e5d9f328f8",
         "name": "kmsInterested",
         "group_id": null,
-        "order_nr": 206,
+        "order_nr": 213,
         "field_type": "set",
         "json_column_flag": true,
-        "add_time": "2024-01-01 10:40:41",
+        "add_time": "2024-01-01 11:46:00",
         "update_time": null,
         "last_updated_by_user_id": 19039577,
         "edit_flag": true,
@@ -1091,15 +1091,15 @@
         },
         "options": [
           {
-            "id": 186,
+            "id": 194,
             "label": "10000"
           },
           {
-            "id": 187,
+            "id": 195,
             "label": "15000"
           },
           {
-            "id": 188,
+            "id": 196,
             "label": "20000"
           }
         ],
