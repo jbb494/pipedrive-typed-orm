@@ -9,7 +9,8 @@
     "typecheck": "tsc --noEmit",
     "test:client": "bun test test/client",
     "test:push-schema": "bun test test/push-schema",
-    "mock:generate": "bun scripts/mock-generator.ts"
+    "mock:generate": "bun scripts/mock-generator.ts",
+    "push-schema": "bun scripts/push-schema.ts"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
