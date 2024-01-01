@@ -49,7 +49,7 @@ You export your schema from a typescript file.
 
 ```ts
 /* schema/schema.ts */
-import { Schema } from "src/types";
+import { Schema } from "pipedrive-typed-orm";
 
 export const carDealershipSchema = {
   lead: {
@@ -86,7 +86,7 @@ The environment variables that need to be set are:
 ### Pushing the schema to pipedrive
 
 ```sh
-    bunx pipedrive-type-orm push-schema
+    bunx pipedrive-typed-orm push-schema
 ```
 
 ### Using the client
@@ -104,6 +104,23 @@ const result = await client.postLead({
     "Kms interested": ["10000", "20000"] /* Type safe  */,
   },
 });
+```
+
+### Type Utilities
+
+```ts
+import { PropertiesFromSchema } from "pipedrive-typed-orm";
+
+const Properties = PropertiesFromSchema<CustomSchema>;
+
+const Lead = Properties["lead"];
+/* {
+  title: string,
+  ...
+  custom_properties: {
+    ...
+  }
+} */
 ```
 
 ## Roadmap

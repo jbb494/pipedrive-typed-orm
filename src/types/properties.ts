@@ -61,3 +61,6 @@ export type PropertiesBuilder<
           custom_fields: CustomProperties[Property];
         });
 };
+
+export type PropertiesFromSchema<CustomSchema extends Schema> =
+  PropertiesBuilder<BaseProperties, inferPropertyFromSchema<CustomSchema>>;
