@@ -1,6 +1,6 @@
 {
   "name": "pipedrive-typed-orm",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "license": "MIT",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -16,7 +16,7 @@
     "prepublishOnly": "bun run build"
   },
   "bin": {
-    "pipedrive-typed-orm": "scripts/push-schema.ts"
+    "pipedrive-typed-orm": "./dist/scripts/push-schema.js"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
