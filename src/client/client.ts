@@ -4,13 +4,14 @@ import { PipedriveOrmClient, Schema } from "../types";
 import { payloadPropertyToPayloadForPipedrive } from "./payload";
 
 export type PipedriveOrmClientConfig = {
-  axiosInstance: AxiosInstance;
+  axiosInstance?: AxiosInstance;
 };
+export const createPipedriveOrmClient = <CustomSchema extends Schema>(
+  config?: PipedriveOrmClientConfig
+): PipedriveOrmClient<CustomSchema> => {
+  let { axiosInstance } = config ?? {};
 
-export const createPipedriveOrmClient = <CustomSchema extends Schema>({
-  axiosInstance,
-}: PipedriveOrmClientConfig): PipedriveOrmClient<CustomSchema> => {
-  if (!axiosInstance) {
+  if (axiosInstance === undefined) {
     if (!process.env.PIPEDRIVE_URL || !process.env.PIPEDRIVE_KEY)
       throw new Error(
         "Environment variables PIPEDRIVE_URL, PIPEDRIVE_KEY must be either set, or a axiosInstance must be passed"
@@ -18,11 +19,12 @@ export const createPipedriveOrmClient = <CustomSchema extends Schema>({
 
     axiosInstance = axios.create({
       baseURL: process.env.PIPEDRIVE_URL,
+      headers: {
+        "Accept-Encoding": "*",
+      },
     });
-
     axiosInstance.defaults.params = {};
-
-    axiosInstance.defaults.params["api-key"] = process.env.PIPEDRIVE_KEY;
+    axiosInstance.defaults.params["api_token"] = process.env.PIPEDRIVE_KEY;
   }
   return {
     postLead: async (payload): Promise<Result<any, Error>> => {
@@ -31,7 +33,7 @@ export const createPipedriveOrmClient = <CustomSchema extends Schema>({
         newPayload = await payloadPropertyToPayloadForPipedrive(
           payload as any,
           "dealFields",
-          axiosInstance
+          axiosInstance!
         );
       } catch (e) {
         return Err(
@@ -41,7 +43,7 @@ export const createPipedriveOrmClient = <CustomSchema extends Schema>({
 
       let responsePost: AxiosResponse;
       try {
-        responsePost = await axiosInstance.post("lead", newPayload);
+        responsePost = await axiosInstance!.post("leads", newPayload);
       } catch (e) {
         return Err(new Error("Error posting lead to pipedrive", { cause: e }));
       }
@@ -54,7 +56,7 @@ export const createPipedriveOrmClient = <CustomSchema extends Schema>({
         newPayload = await payloadPropertyToPayloadForPipedrive(
           payload as any,
           "personFields",
-          axiosInstance
+          axiosInstance!
         );
       } catch (e) {
         return Err(
@@ -64,7 +66,7 @@ export const createPipedriveOrmClient = <CustomSchema extends Schema>({
 
       let responsePost: AxiosResponse;
       try {
-        responsePost = await axiosInstance.post("person", newPayload);
+        responsePost = await axiosInstance!.post("persons", newPayload);
       } catch (e) {
         return Err(
           new Error("Error posting person to pipedrive", { cause: e })

@@ -2,7 +2,7 @@
 
 exports[`client Client with scenarioA should post lead no custom fields 1`] = `
 [
-  "lead",
+  "leads",
   {
     "person_id": 1256,
     "title": "Title lead",
@@ -12,7 +12,7 @@ exports[`client Client with scenarioA should post lead no custom fields 1`] = `
 
 exports[`client Client with scenarioA should post lead with custom fields 1`] = `
 [
-  "lead",
+  "leads",
   {
     "6b0f9ad49cea2ddf35760b60aa8ef812f72e4548": [
       202,
@@ -27,7 +27,7 @@ exports[`client Client with scenarioA should post lead with custom fields 1`] = 
 
 exports[`client Client with scenarioA should post person with custom fields 1`] = `
 [
-  "person",
+  "persons",
   {
     "e38d2cf0b425791358a30c1a64edccad284a29f4": 2,
     "email": "whatever@whatever.es",

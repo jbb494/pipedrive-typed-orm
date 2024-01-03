@@ -8,5 +8,5 @@ export type PipedriveOrmClient<
 > = {
   [P in Extract<keyof CompleteSchema, string> as `post${Capitalize<P>}`]: (
     p: CompleteSchema[P]
-  ) => Promise<Result<void, Error>>;
+  ) => Promise<Result<any, Error>>;
 };

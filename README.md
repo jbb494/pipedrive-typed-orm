@@ -78,7 +78,7 @@ export const carDealershipSchema = {
 The environment variables that need to be set are:
 
 ```sh
-    PIPEDRIVE_URL=https://${domain}.pipedrive.com/api/v1
+    PIPEDRIVE_URL=https://api.pipedrive.com/v1
     PIPEDRIVE_KEY=pipedrive_api_key
     SCHEMA_PATH=path/to/schema.ts
 ```
@@ -129,14 +129,18 @@ const Lead = Properties["lead"];
 
 - [x] FEATURE - Implementing almost all field_types (text, phone, double, date, monetary, enum, set)
 - [ ] OPTIMIZATION - Make deletions in bulk
+- [ ] FEATURE - Schema diff option (no pushing to pipedrive)
+- [ ] FEATURE - Schema pull from pipedrive
 
 ### Client
 
 - [x] FEATURE - Posting leads
 - [x] FEATURE - Posting persons
 - [ ] FEATURE - Posting organizations
+- [ ] REFACTOR - createClient shouldnt work with env variables
 
 ## Caveats
 
-The labels of the fields ARE the keys of the schema object. This means that the labels must be unique within each property.
-Setting a field required only work for type safety purposes. Since pipedrive doesn't allow for setting this option from the api.
+- The labels of the fields ARE the keys of the schema object. This means that the labels must be unique within each property.
+- Setting a field required only work for type safety purposes. Since pipedrive doesn't allow for setting this option from the api.
+- Making any post will do two api calls. One for getting the custom fields and the other to send the post.

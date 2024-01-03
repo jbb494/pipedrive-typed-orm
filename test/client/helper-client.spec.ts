@@ -1,4 +1,5 @@
 import { AxiosInstance } from "axios";
+import { Err, Ok, Result } from "ga-ts";
 
 export const createAxiosInstanceMock = (scenario: string): AxiosInstance => {
   return {
@@ -8,4 +9,30 @@ export const createAxiosInstanceMock = (scenario: string): AxiosInstance => {
     },
     post: async (filePath, data) => Promise.resolve({ data: {} }),
   } as AxiosInstance;
+};
+
+export const deleteLead = async (
+  axiosInstance: AxiosInstance,
+  id: number
+): Promise<Result<undefined, Error>> => {
+  let response;
+  try {
+    response = await axiosInstance.delete(`leads/${id}`);
+    return Ok(undefined);
+  } catch (e) {
+    return Err(new Error("Error deleting lead", { cause: e }));
+  }
+};
+
+export const deletePerson = async (
+  axiosInstance: AxiosInstance,
+  id: number
+): Promise<Result<undefined, Error>> => {
+  let response;
+  try {
+    response = await axiosInstance.delete(`persons/${id}`);
+    return Ok(undefined);
+  } catch (e) {
+    return Err(new Error("Error deleting person", { cause: e }));
+  }
 };

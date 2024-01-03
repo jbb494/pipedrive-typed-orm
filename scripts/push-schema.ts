@@ -1,3 +1,5 @@
+#!/usr/bin/env bun
+
 import { pushToPipedrive } from "src/push-schema";
 
 const main = async () => {
