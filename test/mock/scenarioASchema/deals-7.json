@@ -1,0 +1,197 @@
+{
+  "data": {
+    "success": true,
+    "data": {
+      "id": 7,
+      "creator_user_id": {
+        "id": 19039577,
+        "name": "Renovarent",
+        "email": "renovarent.web@gmail.com",
+        "has_pic": 0,
+        "pic_hash": null,
+        "active_flag": true,
+        "value": 19039577
+      },
+      "user_id": {
+        "id": 19039577,
+        "name": "Renovarent",
+        "email": "renovarent.web@gmail.com",
+        "has_pic": 0,
+        "pic_hash": null,
+        "active_flag": true,
+        "value": 19039577
+      },
+      "person_id": {
+        "active_flag": true,
+        "name": "John Doe",
+        "email": [
+          {
+            "label": "work",
+            "value": "john.doe@example.com",
+            "primary": true
+          }
+        ],
+        "phone": [
+          {
+            "label": "",
+            "value": "1234567890",
+            "primary": true
+          }
+        ],
+        "owner_id": 19039577,
+        "value": 17
+      },
+      "org_id": null,
+      "stage_id": 1,
+      "title": "Deal 1",
+      "value": 0,
+      "currency": "USD",
+      "add_time": "2024-01-12 21:37:46",
+      "update_time": "2024-01-12 21:37:47",
+      "stage_change_time": null,
+      "active": true,
+      "deleted": false,
+      "status": "open",
+      "probability": null,
+      "next_activity_date": null,
+      "next_activity_time": null,
+      "next_activity_id": null,
+      "last_activity_id": null,
+      "last_activity_date": null,
+      "lost_reason": null,
+      "visible_to": "3",
+      "close_time": null,
+      "pipeline_id": 1,
+      "won_time": null,
+      "first_won_time": null,
+      "lost_time": null,
+      "products_count": 0,
+      "files_count": 0,
+      "notes_count": 0,
+      "followers_count": 1,
+      "email_messages_count": 0,
+      "activities_count": 0,
+      "done_activities_count": 0,
+      "undone_activities_count": 0,
+      "participants_count": 1,
+      "expected_close_date": null,
+      "last_incoming_mail_time": null,
+      "last_outgoing_mail_time": null,
+      "label": null,
+      "stage_order_nr": 0,
+      "person_name": "John Doe",
+      "org_name": null,
+      "next_activity_subject": null,
+      "next_activity_type": null,
+      "next_activity_duration": null,
+      "next_activity_note": null,
+      "formatted_value": "$0",
+      "weighted_value": 0,
+      "formatted_weighted_value": "$0",
+      "weighted_value_currency": "USD",
+      "rotten_time": null,
+      "owner_name": "Renovarent",
+      "cc_email": "renovarent-sandbox+deal7@pipedrivemail.com",
+      "7770017d04dac71db36788041a38437735e7a83c": null,
+      "2902d3de6b5f39ce619680a3b08716dbbaa413af": null,
+      "71f8a93027d49969651400c3a6cefc6e5b80bedc": null,
+      "org_hidden": false,
+      "person_hidden": false,
+      "average_time_to_won": {
+        "y": 0,
+        "m": 0,
+        "d": 0,
+        "h": 0,
+        "i": 0,
+        "s": 0,
+        "total_seconds": 0
+      },
+      "average_stage_progress": 0,
+      "age": {
+        "y": 0,
+        "m": 0,
+        "d": 0,
+        "h": 0,
+        "i": 0,
+        "s": 1,
+        "total_seconds": 1
+      },
+      "stay_in_pipeline_stages": {
+        "times_in_stages": {
+          "1": 0
+        },
+        "order_of_stages": [
+          1
+        ]
+      },
+      "last_activity": null,
+      "next_activity": null
+    },
+    "additional_data": {
+      "dropbox_email": "renovarent-sandbox+deal7@pipedrivemail.com"
+    },
+    "related_objects": {
+      "user": {
+        "19039577": {
+          "id": 19039577,
+          "name": "Renovarent",
+          "email": "renovarent.web@gmail.com",
+          "has_pic": 0,
+          "pic_hash": null,
+          "active_flag": true
+        }
+      },
+      "pipeline": {
+        "1": {
+          "id": 1,
+          "name": "Pipeline",
+          "url_title": "default",
+          "order_nr": 1,
+          "active": true,
+          "deal_probability": false,
+          "add_time": "2023-12-30 05:33:34",
+          "update_time": null
+        }
+      },
+      "person": {
+        "17": {
+          "active_flag": true,
+          "id": 17,
+          "name": "John Doe",
+          "email": [
+            {
+              "label": "work",
+              "value": "john.doe@example.com",
+              "primary": true
+            }
+          ],
+          "phone": [
+            {
+              "label": "",
+              "value": "1234567890",
+              "primary": true
+            }
+          ],
+          "owner_id": 19039577
+        }
+      },
+      "stage": {
+        "1": {
+          "id": 1,
+          "company_id": 12786564,
+          "order_nr": 0,
+          "name": "Qualified",
+          "active_flag": true,
+          "deal_probability": 100,
+          "pipeline_id": 1,
+          "rotten_flag": false,
+          "rotten_days": null,
+          "add_time": "2023-12-30 21:50:03",
+          "update_time": null,
+          "pipeline_name": "Pipeline",
+          "pipeline_deal_probability": false
+        }
+      }
+    }
+  }
+}

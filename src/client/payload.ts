@@ -9,15 +9,12 @@ export const payloadPropertyToPayloadForPipedrive = async <
   pathEndpoint: "dealFields" | "personFields",
   axiosInstance: AxiosInstance
 ) => {
-  const response = await axiosInstance.get(
-    `/${pathEndpoint}?api_token=${process.env.PIPEDRIVE_KEY}`,
-    {
-      method: "GET",
-      headers: {
-        "Accept-Encoding": "*",
-      },
-    }
-  );
+  const response = await axiosInstance.get(`/${pathEndpoint}`, {
+    method: "GET",
+    headers: {
+      "Accept-Encoding": "*",
+    },
+  });
 
   const allFields = response.data as any;
   const allCustomFields = allFields.data

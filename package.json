@@ -16,7 +16,7 @@
     "prepublishOnly": "bun run build"
   },
   "bin": {
-    "pipedrive-typed-orm": "./dist/scripts/push-schema.js"
+    "pipedrive-typed-orm": "./dist/scripts/index.js"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

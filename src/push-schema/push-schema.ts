@@ -30,7 +30,7 @@ const overWriteProperty = async (
       console.log(`Adding: ${name}`);
       const data = await (
         await fetch(
-          `${process.env.PIPEDRIVE_URL}/${endpointPath}?api_token=${process.env.PIPEDRIVE_KEY}`,
+          `https://api.pipedrive.com/v1/${endpointPath}?api_token=${process.env.PIPEDRIVE_KEY}`,
           {
             method: "POST",
             body: JSON.stringify({
@@ -57,7 +57,7 @@ const overWriteProperty = async (
       console.log(`Removing: ${name}`);
       const data = await (
         await fetch(
-          `${process.env.PIPEDRIVE_URL}/${endpointPath}/${id}?api_token=${process.env.PIPEDRIVE_KEY}`,
+          `https://api.pipedrive.com/v1/${endpointPath}/${id}?api_token=${process.env.PIPEDRIVE_KEY}`,
           {
             method: "DELETE",
             headers: {

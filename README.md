@@ -11,7 +11,7 @@ before:
 ```ts
 const response = await(
   await fetch(
-    `${process.env.PIPEDRIVE_URL}/lead?api_token=${process.env.PIPEDRIVE_KEY}`,
+    `https://api.pipedrive.com/v1/lead?api_token=${process.env.PIPEDRIVE_KEY}`,
     {
       method: "POST",
       body: JSON.stringify({
@@ -78,8 +78,6 @@ export const carDealershipSchema = {
 The environment variables that need to be set are:
 
 ```sh
-    PIPEDRIVE_URL=https://api.pipedrive.com/v1
-    PIPEDRIVE_KEY=pipedrive_api_key
     SCHEMA_PATH=path/to/schema.ts
 ```
 
@@ -136,7 +134,10 @@ const Lead = Properties["lead"];
 
 - [x] FEATURE - Posting leads
 - [x] FEATURE - Posting persons
+- [ ] FEATURE - Posting deals
 - [ ] FEATURE - Posting organizations
+- [ ] FEATURE - Posting pipelines
+- [ ] FEATURE - Implement Get request
 - [ ] REFACTOR - createClient shouldnt work with env variables
 
 ## Caveats

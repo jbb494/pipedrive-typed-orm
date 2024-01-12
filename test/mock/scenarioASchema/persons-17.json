@@ -1,0 +1,112 @@
+{
+  "data": {
+    "success": true,
+    "data": {
+      "id": 17,
+      "company_id": 12786564,
+      "owner_id": {
+        "id": 19039577,
+        "name": "Renovarent",
+        "email": "renovarent.web@gmail.com",
+        "has_pic": 0,
+        "pic_hash": null,
+        "active_flag": true,
+        "value": 19039577
+      },
+      "org_id": null,
+      "name": "John Doe",
+      "first_name": "John",
+      "last_name": "Doe",
+      "open_deals_count": 1,
+      "related_open_deals_count": 0,
+      "closed_deals_count": 0,
+      "related_closed_deals_count": 0,
+      "participant_open_deals_count": 0,
+      "participant_closed_deals_count": 0,
+      "email_messages_count": 0,
+      "activities_count": 0,
+      "done_activities_count": 0,
+      "undone_activities_count": 0,
+      "files_count": 0,
+      "notes_count": 0,
+      "followers_count": 1,
+      "won_deals_count": 0,
+      "related_won_deals_count": 0,
+      "lost_deals_count": 0,
+      "related_lost_deals_count": 0,
+      "active_flag": true,
+      "phone": [
+        {
+          "label": "",
+          "value": "1234567890",
+          "primary": true
+        }
+      ],
+      "email": [
+        {
+          "label": "work",
+          "value": "john.doe@example.com",
+          "primary": true
+        }
+      ],
+      "first_char": "j",
+      "update_time": "2024-01-12 21:37:47",
+      "delete_time": null,
+      "add_time": "2024-01-12 21:37:46",
+      "visible_to": "3",
+      "picture_id": null,
+      "next_activity_date": null,
+      "next_activity_time": null,
+      "next_activity_id": null,
+      "last_activity_id": null,
+      "last_activity_date": null,
+      "last_incoming_mail_time": null,
+      "last_outgoing_mail_time": null,
+      "label": null,
+      "label_ids": [],
+      "im": [
+        {
+          "value": "",
+          "primary": true
+        }
+      ],
+      "postal_address": null,
+      "postal_address_lat": null,
+      "postal_address_long": null,
+      "postal_address_subpremise": null,
+      "postal_address_street_number": null,
+      "postal_address_route": null,
+      "postal_address_sublocality": null,
+      "postal_address_locality": null,
+      "postal_address_admin_area_level_1": null,
+      "postal_address_admin_area_level_2": null,
+      "postal_address_country": null,
+      "postal_address_postal_code": null,
+      "postal_address_formatted_address": null,
+      "notes": null,
+      "birthday": null,
+      "job_title": null,
+      "org_name": null,
+      "cc_email": "renovarent-sandbox@pipedrivemail.com",
+      "primary_email": "john.doe@example.com",
+      "owner_name": "Renovarent",
+      "561b4ea2bf386965915ddf7a5508314fde9e9979": "Jane Doe",
+      "8dc7e58a1f80fc37647beb1f6ee2345d55644c4a": 30
+    },
+    "additional_data": {
+      "dropbox_email": "renovarent-sandbox@pipedrivemail.com"
+    },
+    "related_objects": {
+      "user": {
+        "19039577": {
+          "id": 19039577,
+          "name": "Renovarent",
+          "email": "renovarent.web@gmail.com",
+          "has_pic": 0,
+          "pic_hash": null,
+          "active_flag": true
+        }
+      }
+    }
+  }
+}

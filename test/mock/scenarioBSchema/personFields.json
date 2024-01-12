@@ -618,14 +618,14 @@
         "mandatory_flag": false
       },
       {
-        "id": 199,
-        "key": "4ca588ca2b0ffc24c9f4a05f4e1ed7ebf3a4065d",
+        "id": 251,
+        "key": "7f48c547a35d5c56ed8307fc38337dfbe433914e",
         "name": "birthday",
         "group_id": null,
-        "order_nr": 174,
+        "order_nr": 226,
         "field_type": "date",
         "json_column_flag": true,
-        "add_time": "2024-01-01 12:08:52",
+        "add_time": "2024-01-12 21:37:39",
         "update_time": null,
         "last_updated_by_user_id": 19039577,
         "edit_flag": true,

@@ -1,4 +1,4 @@
-export type PropertyKeys = "lead" | "person";
+export type PropertyKeys = "lead" | "person" | "deal";
 
 export type ItemType<Options = readonly string[]> = (
   | {
@@ -53,6 +53,21 @@ export const BaseFieldsSchema = {
     phone: { field_type: "text" },
     owner_id: { field_type: "text" },
     org_id: { field_type: "text" },
+  },
+  deal: {
+    title: { field_type: "text", required: true },
+    value: { field_type: "monetary" },
+    currency: { field_type: "text" },
+    user_id: { field_type: "double" },
+    person_id: { field_type: "double", required: true },
+    org_id: { field_type: "double" },
+    pipeline_id: { field_type: "double" },
+    stage_id: { field_type: "double" },
+    status: { field_type: "text" },
+    add_time: { field_type: "text" },
+    expected_close_date: { field_type: "text" },
+    probability: { field_type: "double" },
+    lost_reason: { field_type: "text" },
   },
 } as const satisfies Schema;
 

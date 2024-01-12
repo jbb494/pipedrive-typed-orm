@@ -4,7 +4,11 @@ import { Err, Ok, Result } from "ga-ts";
 export const createAxiosInstanceMock = (scenario: string): AxiosInstance => {
   return {
     get: async (filePath) => {
-      const response = await import(`test/mock/${scenario}/${filePath}.json`);
+      const response = await import(
+        `test/mock/${scenario}/${filePath
+          .replace(/^\//, "")
+          .replaceAll("/", "-")}.json`
+      );
       return response;
     },
     post: async (filePath, data) => Promise.resolve({ data: {} }),

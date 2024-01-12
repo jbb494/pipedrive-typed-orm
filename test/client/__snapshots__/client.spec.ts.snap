@@ -1,6 +1,6 @@
 // Bun Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`client Client with scenarioA should post lead no custom fields 1`] = `
+exports[`client Client with scenarioA Post should post lead no custom fields 1`] = `
 [
   "leads",
   {
@@ -10,29 +10,158 @@ exports[`client Client with scenarioA should post lead no custom fields 1`] = `
 ]
 `;
 
-exports[`client Client with scenarioA should post lead with custom fields 1`] = `
+exports[`client Client with scenarioA Post should post lead with custom fields 1`] = `
 [
   "leads",
   {
-    "6b0f9ad49cea2ddf35760b60aa8ef812f72e4548": [
-      202,
-      204,
+    "cd0aaf8e7c0628b6458b938d6f2f42cf2845adf0": 303,
+    "ce655bf24c8842e5b756575329ff45ae6d023869": [
+      306,
+      308,
     ],
-    "ce00b42565110c896f693a1e3c4a0ac4960c3777": 199,
     "person_id": 1256,
     "title": "Title lead",
   },
 ]
 `;
 
-exports[`client Client with scenarioA should post person with custom fields 1`] = `
+exports[`client Client with scenarioA Post should post person with custom fields 1`] = `
 [
   "persons",
   {
-    "e38d2cf0b425791358a30c1a64edccad284a29f4": 2,
+    "659db227caeff5da95d7f7edc5328f1122be0b2f": "whatever",
+    "b1d5f7480391784cd557b850eca0063dafd2ed4f": 2,
     "email": "whatever@whatever.es",
-    "ffee954743d1b60f42f025bc99a7351822adcedd": "whatever",
     "name": "Whatever",
   },
 ]
+`;
+
+exports[`client Get Should get deal 1`] = `
+{
+  "2902d3de6b5f39ce619680a3b08716dbbaa413af": null,
+  "71f8a93027d49969651400c3a6cefc6e5b80bedc": null,
+  "7770017d04dac71db36788041a38437735e7a83c": null,
+  "active": true,
+  "activities_count": 0,
+  "add_time": "2024-01-12 21:37:46",
+  "age": {
+    "d": 0,
+    "h": 0,
+    "i": 0,
+    "m": 0,
+    "s": 1,
+    "total_seconds": 1,
+    "y": 0,
+  },
+  "average_stage_progress": 0,
+  "average_time_to_won": {
+    "d": 0,
+    "h": 0,
+    "i": 0,
+    "m": 0,
+    "s": 0,
+    "total_seconds": 0,
+    "y": 0,
+  },
+  "cc_email": "renovarent-sandbox+deal7@pipedrivemail.com",
+  "close_time": null,
+  "creator_user_id": {
+    "active_flag": true,
+    "email": "renovarent.web@gmail.com",
+    "has_pic": 0,
+    "id": 19039577,
+    "name": "Renovarent",
+    "pic_hash": null,
+    "value": 19039577,
+  },
+  "currency": "USD",
+  "deleted": false,
+  "done_activities_count": 0,
+  "email_messages_count": 0,
+  "expected_close_date": null,
+  "files_count": 0,
+  "first_won_time": null,
+  "followers_count": 1,
+  "formatted_value": "$0",
+  "formatted_weighted_value": "$0",
+  "id": 7,
+  "label": null,
+  "last_activity": null,
+  "last_activity_date": null,
+  "last_activity_id": null,
+  "last_incoming_mail_time": null,
+  "last_outgoing_mail_time": null,
+  "lost_reason": null,
+  "lost_time": null,
+  "next_activity": null,
+  "next_activity_date": null,
+  "next_activity_duration": null,
+  "next_activity_id": null,
+  "next_activity_note": null,
+  "next_activity_subject": null,
+  "next_activity_time": null,
+  "next_activity_type": null,
+  "notes_count": 0,
+  "org_hidden": false,
+  "org_id": null,
+  "org_name": null,
+  "owner_name": "Renovarent",
+  "participants_count": 1,
+  "person_hidden": false,
+  "person_id": {
+    "active_flag": true,
+    "email": [
+      {
+        "label": "work",
+        "primary": true,
+        "value": "john.doe@example.com",
+      },
+    ],
+    "name": "John Doe",
+    "owner_id": 19039577,
+    "phone": [
+      {
+        "label": "",
+        "primary": true,
+        "value": "1234567890",
+      },
+    ],
+    "value": 17,
+  },
+  "person_name": "John Doe",
+  "pipeline_id": 1,
+  "probability": null,
+  "products_count": 0,
+  "rotten_time": null,
+  "stage_change_time": null,
+  "stage_id": 1,
+  "stage_order_nr": 0,
+  "status": "open",
+  "stay_in_pipeline_stages": {
+    "order_of_stages": [
+      1,
+    ],
+    "times_in_stages": {
+      "1": 0,
+    },
+  },
+  "title": "Deal 1",
+  "undone_activities_count": 0,
+  "update_time": "2024-01-12 21:37:47",
+  "user_id": {
+    "active_flag": true,
+    "email": "renovarent.web@gmail.com",
+    "has_pic": 0,
+    "id": 19039577,
+    "name": "Renovarent",
+    "pic_hash": null,
+    "value": 19039577,
+  },
+  "value": 0,
+  "visible_to": "3",
+  "weighted_value": 0,
+  "weighted_value_currency": "USD",
+  "won_time": null,
+}
 `;

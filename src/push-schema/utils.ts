@@ -5,7 +5,7 @@ export const getAllFields = async (endpointPath: string) => {
     return Ok(
       (await (
         await fetch(
-          `${process.env.PIPEDRIVE_URL}/${endpointPath}?api_token=${process.env.PIPEDRIVE_KEY}`,
+          `https://api.pipedrive.com/v1/${endpointPath}?api_token=${process.env.PIPEDRIVE_KEY}`,
           {
             method: "GET",
             headers: {
