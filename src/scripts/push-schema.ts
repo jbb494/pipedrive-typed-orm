@@ -1,13 +1,17 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 
 import { pushToPipedrive } from "src/push-schema";
+import path from "path";
 
 const main = async () => {
-  const schemaPath = process.env.SCHEMA_PATH;
-  if (!schemaPath)
-    throw new Error("Environmenet variable SCHEMA_PATH is not defined");
+  process.env.SCHEMA_PATH = process.argv[2];
+  process.env.PIPEDRIVE_KEY = process.argv[3];
 
-  const schema = await import(schemaPath);
+  if (!process.argv[2]) throw new Error("Param schema_path is not defined");
+  console.log(path.join(process.cwd(), process.env.SCHEMA_PATH));
+
+  if (!process.argv[3]) throw new Error("Param pipedrive_key is not defined");
+  const schema = await import(process.env.SCHEMA_PATH);
   const exportedSchema = Object.values(schema)[0];
 
   const result = await pushToPipedrive(exportedSchema);

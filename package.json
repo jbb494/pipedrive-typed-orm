@@ -1,6 +1,6 @@
 {
   "name": "pipedrive-typed-orm",
-  "version": "0.0.18",
+  "version": "0.0.26",
   "license": "MIT",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -16,7 +16,7 @@
     "prepublishOnly": "bun run build"
   },
   "bin": {
-    "pipedrive-typed-orm": "./dist/scripts/index.js"
+    "pipedrive-typed-orm": "dist/scripts/index.js"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

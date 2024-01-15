@@ -74,6 +74,7 @@ describe("client", () => {
       const result = await client.getDeal(id);
 
       expect(result.value.data).toMatchSnapshot();
+      expect(result.value.success).toBe(true);
       expect(result.ok).toBe(true);
     });
   });
