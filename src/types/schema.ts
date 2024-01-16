@@ -26,8 +26,10 @@ export type ItemType<Options = readonly string[]> = (
     }
 ) & { required?: boolean };
 
-export type Schema = {
-  [property in PropertyKeys]?: { [field: string]: ItemType };
+export type Schema<ExcludeFields extends string = "deal"> = {
+  [property in Exclude<PropertyKeys, ExcludeFields>]?: {
+    [field: string]: ItemType;
+  };
 };
 
 export const BaseFieldsSchema = {
@@ -51,8 +53,8 @@ export const BaseFieldsSchema = {
     name: { field_type: "text" },
     email: { field_type: "text" },
     phone: { field_type: "text" },
-    owner_id: { field_type: "text" },
-    org_id: { field_type: "text" },
+    owner_id: { field_type: "double" },
+    org_id: { field_type: "double" },
   },
   deal: {
     title: { field_type: "text", required: true },
@@ -69,7 +71,7 @@ export const BaseFieldsSchema = {
     probability: { field_type: "double" },
     lost_reason: { field_type: "text" },
   },
-} as const satisfies Schema;
+} as const satisfies Schema<"">;
 
 export type BaseFieldsSchema = typeof BaseFieldsSchema;
 
@@ -98,26 +100,3 @@ export type inferFieldType<T extends ItemType> = T extends {
     ? Options[number][]
     : never
   : never;
-
-/* 
-  # Schema
-
-  ItemType
-
-  Schema 
-
-  BaseSchema
-
-
-
-  # Properties
-  
-  PropertyKeys (Lead, Person)
-  
-  Properties  # Infered from Schema
-
-  BuildProperties < BaseProperties, CustomProperties> (which are of type Properties)
-
-
-
-*/

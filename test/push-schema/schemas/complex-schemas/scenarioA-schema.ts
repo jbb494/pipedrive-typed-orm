@@ -23,5 +23,4 @@ export const scenarioASchema = {
       field_type: "double",
     },
   },
-  deal: {},
 } as const satisfies Schema;

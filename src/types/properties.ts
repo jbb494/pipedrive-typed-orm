@@ -13,13 +13,15 @@ import {
   Or,
 } from "./utils";
 
-export type Properties = {
-  [Property in PropertyKeys]: {
+export type Properties<ExcludeDeal extends boolean = false> = {
+  [Property in ExcludeDeal extends true
+    ? Exclude<PropertyKeys, "deal">
+    : PropertyKeys]: {
     [field: string]: inferFieldType<ItemType>;
   };
 };
 
-export type inferPropertyFromSchema<S extends Schema> = {
+export type inferPropertyFromSchema<S extends Schema<"">> = {
   [Property in PropertyKeys]: {
     [Field in keyof S[Property] as true extends (
       S[Property][Field] extends ItemType
@@ -47,18 +49,21 @@ export type BaseProperties = inferPropertyFromSchema<BaseFieldsSchema>;
 
 export type PropertiesBuilder<
   BaseProperties extends Properties,
-  CustomProperties extends Properties
+  CustomProperties extends Properties<true>,
+  CustomPropertiesDeal extends Properties = CustomProperties & {
+    deal: CustomProperties["lead"];
+  }
 > = {
   [Property in keyof Properties]: BaseProperties[Property] &
     (true extends Or<
-      Not<IsAnyFieldRequired<CustomProperties[Property]>>,
-      IsEmptyObject<CustomProperties[Property]>
+      Not<IsAnyFieldRequired<CustomPropertiesDeal[Property]>>,
+      IsEmptyObject<CustomPropertiesDeal[Property]>
     >
       ? {
-          custom_fields?: CustomProperties[Property];
+          custom_fields?: CustomPropertiesDeal[Property];
         }
       : {
-          custom_fields: CustomProperties[Property];
+          custom_fields: CustomPropertiesDeal[Property];
         });
 };
 

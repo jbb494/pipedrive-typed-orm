@@ -53,6 +53,19 @@ describe("client", () => {
         expect(postSpy.mock.lastCall).toMatchSnapshot();
         expect(result.ok).toBe(true);
       });
+      it("should post deal with custom fields", async () => {
+        const result = await client.postDeal({
+          title: "Title lead",
+          person_id: 1256,
+          custom_fields: {
+            carMake: "bmw",
+            kmsInterested: ["10000", "20000"],
+          },
+        });
+
+        expect(postSpy.mock.lastCall).toMatchSnapshot();
+        expect(result.ok).toBe(true);
+      });
       it("should post person with custom fields", async () => {
         const result = await client.postPerson({
           name: "Whatever",

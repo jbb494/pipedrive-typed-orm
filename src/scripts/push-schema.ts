@@ -8,10 +8,11 @@ const main = async () => {
   process.env.PIPEDRIVE_KEY = process.argv[3];
 
   if (!process.argv[2]) throw new Error("Param schema_path is not defined");
-  console.log(path.join(process.cwd(), process.env.SCHEMA_PATH));
 
   if (!process.argv[3]) throw new Error("Param pipedrive_key is not defined");
-  const schema = await import(process.env.SCHEMA_PATH);
+  const schema = await import(
+    path.join(process.cwd(), process.env.SCHEMA_PATH)
+  );
   const exportedSchema = Object.values(schema)[0];
 
   const result = await pushToPipedrive(exportedSchema);
