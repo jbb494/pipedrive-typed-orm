@@ -57,6 +57,7 @@ describe("client", () => {
         const result = await client.postDeal({
           title: "Title lead",
           person_id: 1256,
+          label_ids: ["a", "b"],
           custom_fields: {
             carMake: "bmw",
             kmsInterested: ["10000", "20000"],
@@ -143,7 +144,7 @@ describe("client", () => {
       afterAll(async () => {
         await pushToPipedrive(emptySchema);
       });
-      it.only("Should post lead with custom fields", async () => {
+      it("Should post lead with custom fields", async () => {
         const resultPerson = await client.postPerson({
           name: "Test Bob",
           custom_fields: {

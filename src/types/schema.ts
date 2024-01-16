@@ -24,6 +24,9 @@ export type ItemType<Options = readonly string[]> = (
       field_type: "set";
       options: Options;
     }
+  | {
+      field_type: "array";
+    }
 ) & { required?: boolean };
 
 export type Schema<ExcludeFields extends string = "deal"> = {
@@ -48,6 +51,7 @@ export const BaseFieldsSchema = {
     },
     expected_close_date: { field_type: "date" },
     visible_to: { field_type: "text" },
+    label_ids: { field_type: "array" },
   },
   person: {
     name: { field_type: "text" },
@@ -70,6 +74,7 @@ export const BaseFieldsSchema = {
     expected_close_date: { field_type: "text" },
     probability: { field_type: "double" },
     lost_reason: { field_type: "text" },
+    label_ids: { field_type: "array" },
   },
 } as const satisfies Schema<"">;
 
@@ -91,6 +96,10 @@ export type inferFieldType<T extends ItemType> = T extends {
       field_type: "monetary";
     }
   ? { amount: number; currency: "USD" | "EUR" }
+  : T extends {
+      field_type: "array";
+    }
+  ? string[]
   : T extends { field_type: "enum"; options: infer Options }
   ? Options extends readonly string[]
     ? Options[number]

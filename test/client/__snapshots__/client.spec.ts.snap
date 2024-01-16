@@ -165,3 +165,22 @@ exports[`client Get Should get deal 1`] = `
   "won_time": null,
 }
 `;
+
+exports[`client Client with scenarioA Post should post deal with custom fields 1`] = `
+[
+  "deals",
+  {
+    "cd0aaf8e7c0628b6458b938d6f2f42cf2845adf0": 303,
+    "ce655bf24c8842e5b756575329ff45ae6d023869": [
+      306,
+      308,
+    ],
+    "label_ids": [
+      "a",
+      "b",
+    ],
+    "person_id": 1256,
+    "title": "Title lead",
+  },
+]
+`;
