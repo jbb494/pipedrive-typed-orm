@@ -28,6 +28,19 @@ export const deleteLead = async (
   }
 };
 
+export const deleteDeal = async (
+  axiosInstance: AxiosInstance,
+  id: number
+): Promise<Result<undefined, Error>> => {
+  let response;
+  try {
+    response = await axiosInstance.delete(`deals/${id}`);
+    return Ok(undefined);
+  } catch (e) {
+    return Err(new Error("Error deleting deal", { cause: e }));
+  }
+};
+
 export const deletePerson = async (
   axiosInstance: AxiosInstance,
   id: number

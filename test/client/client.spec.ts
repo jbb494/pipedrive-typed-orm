@@ -12,6 +12,7 @@ import { createPipedriveOrmClient } from "src";
 import { PipedriveOrmClientConfig } from "src/client";
 import {
   createAxiosInstanceMock,
+  deleteDeal,
   deleteLead,
   deletePerson,
 } from "./helper-client.spec";
@@ -40,6 +41,7 @@ describe("client", () => {
         });
 
         expect(postSpy.mock.lastCall).toMatchSnapshot();
+        if (!result.ok) console.error(result.error);
         expect(result.ok).toBe(true);
       });
       it("should post lead with custom fields", async () => {
@@ -53,6 +55,7 @@ describe("client", () => {
         });
 
         expect(postSpy.mock.lastCall).toMatchSnapshot();
+        if (!result.ok) console.error(result.error);
         expect(result.ok).toBe(true);
       });
       it("should post deal with custom fields", async () => {
@@ -67,6 +70,7 @@ describe("client", () => {
         });
 
         expect(postSpy.mock.lastCall).toMatchSnapshot();
+        if (!result.ok) console.error(result.error);
         expect(result.ok).toBe(true);
       });
       it("should post person with custom fields", async () => {
@@ -80,6 +84,7 @@ describe("client", () => {
         });
 
         expect(postSpy.mock.lastCall).toMatchSnapshot();
+        if (!result.ok) console.error(result.error);
         expect(result.ok).toBe(true);
       });
     });
@@ -91,6 +96,7 @@ describe("client", () => {
 
       expect(result.value.data).toMatchSnapshot();
       expect(result.value.success).toBe(true);
+      if (!result.ok) console.error(result.error);
       expect(result.ok).toBe(true);
     });
   });
@@ -114,12 +120,14 @@ describe("client", () => {
         const resultPerson = await client.postPerson({
           name: "Test Bob",
         });
+        if (!resultPerson.ok) console.error(resultPerson.error);
         expect(resultPerson.ok).toBe(true);
 
         const resultLead = await client.postLead({
           title: "Title lead",
           person_id: resultPerson.value.data.id,
         });
+        if (!resultLead.ok) console.error(resultLead.error);
         expect(resultLead.ok).toBe(true);
 
         const deleteLeadResult = await deleteLead(
@@ -131,7 +139,9 @@ describe("client", () => {
           resultPerson.value.data.id
         );
 
+        if (!resultLead.ok) console.error(resultLead.error);
         expect(deleteLeadResult.ok).toBe(true);
+        if (!deletePersonResult.ok) console.error(deletePersonResult.error);
         expect(deletePersonResult.ok).toBe(true);
       });
     });
@@ -156,6 +166,7 @@ describe("client", () => {
             partnerName: "Maria",
           },
         });
+        if (!resultPerson.ok) console.error(resultPerson.error);
         expect(resultPerson.ok).toBe(true);
 
         const resultLead = await client.postLead({
@@ -165,6 +176,8 @@ describe("client", () => {
             carMake: "bmw",
           },
         });
+
+        if (!resultLead.ok) console.error(resultLead.error);
         expect(resultLead.ok).toBe(true);
 
         const deleteLeadResult = await deleteLead(
@@ -176,7 +189,10 @@ describe("client", () => {
           resultPerson.value.data.id
         );
 
+        if (!deleteLeadResult.ok) console.error(deleteLeadResult.error);
         expect(deleteLeadResult.ok).toBe(true);
+
+        if (!deletePersonResult.ok) console.error(deletePersonResult.error);
         expect(deletePersonResult.ok).toBe(true);
       });
       it("should post deal to pipeline and stage", async () => {
@@ -186,6 +202,8 @@ describe("client", () => {
             partnerName: "Maria",
           },
         });
+
+        if (!resultPerson.ok) console.error(resultPerson.error);
         expect(resultPerson.ok).toBe(true);
 
         const resultDeal = await client.postDeal({
@@ -195,11 +213,10 @@ describe("client", () => {
           stage: "Stage3",
         });
 
+        if (!resultDeal.ok) console.error(resultDeal.error);
         expect(resultDeal.ok).toBe(true);
 
-        sleep(100_000);
-
-        const deleteLeadResult = await deleteLead(
+        const delateDealResult = await deleteDeal(
           axiosInstance,
           resultDeal.value.data.id
         );
@@ -208,7 +225,9 @@ describe("client", () => {
           resultPerson.value.data.id
         );
 
-        expect(deleteLeadResult.ok).toBe(true);
+        if (!delateDealResult.ok) console.error(delateDealResult.error);
+        expect(delateDealResult.ok).toBe(true);
+        if (!deletePersonResult.ok) console.error(deletePersonResult.error);
         expect(deletePersonResult.ok).toBe(true);
       });
     });

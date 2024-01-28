@@ -222,11 +222,18 @@ const pushPipelineSchema = async (
     try {
       const pipeline = await postPipeline(pipelineName);
       addedPipelines++;
+      console.log(`Added pipeline: ${pipelineName}`);
 
       const stagesFromSchema = pipelineSchema[pipelineName];
       for (const stage of stagesFromSchema) {
         await postStage(stage.stageName, pipeline.id);
         addedStages++;
+        console.log(
+          `Added stage: ${stage.stageName} to pipeline: ${pipelineName}`
+        );
+        await new Promise((resolve) =>
+          setTimeout(resolve, sleepTime)
+        ); /* sleep */
       }
     } catch (error) {
       return Err(
@@ -240,11 +247,28 @@ const pushPipelineSchema = async (
   /* Pipeline to be removed */
   for (const pipeline of pipelinesToRemove) {
     try {
-      const stagesFromPipedrive = await getStages(pipeline.id);
+      const stagesFromPipedrive = (await getStages(pipeline.id)) || [];
+      await new Promise((resolve) =>
+        setTimeout(resolve, sleepTime)
+      ); /* sleep */
+
       removedStages += stagesFromPipedrive.length;
 
       await removeStages(stagesFromPipedrive.map((s) => s.id));
+      console.log(
+        `Removed stages (${stagesFromPipedrive.join(",")}) from pipeline: ${
+          pipeline.name
+        }`
+      );
+      await new Promise((resolve) =>
+        setTimeout(resolve, sleepTime)
+      ); /* sleep */
       await removePipeline(pipeline.id);
+      console.log(`Removed pipeline: ${pipeline.id}`);
+      await new Promise((resolve) =>
+        setTimeout(resolve, sleepTime)
+      ); /* sleep */
+
       removedPipelines++;
     } catch (error) {
       return Err(
@@ -258,7 +282,11 @@ const pushPipelineSchema = async (
   /* Pipelines that were unchanged */
   for (const pipeline of pipelinesUnchanged) {
     try {
-      const stagesFromPipedrive = await getStages(pipeline.id);
+      const stagesFromPipedrive = (await getStages(pipeline.id)) || [];
+      await new Promise((resolve) =>
+        setTimeout(resolve, sleepTime)
+      ); /* sleep */
+
       const stagesFromSchema = pipelineSchema[pipeline.name];
 
       const stagesToAdd = stagesFromSchema.filter(
@@ -271,9 +299,23 @@ const pushPipelineSchema = async (
       for (const stage of stagesToAdd) {
         await postStage(stage.stageName, pipeline.id);
         addedStages++;
+        console.log(
+          `Added stage: ${stage.stageName} to pipeline: ${pipeline.name}`
+        );
+        await new Promise((resolve) =>
+          setTimeout(resolve, sleepTime)
+        ); /* sleep */
       }
 
       await removeStages(stagesToRemove.map((x) => x.id));
+      console.log(
+        `Removed stages (${stagesToRemove.join(",")}) from pipeline: ${
+          pipeline.name
+        }`
+      );
+      await new Promise((resolve) =>
+        setTimeout(resolve, sleepTime)
+      ); /* sleep */
       removedStages += stagesToRemove.length;
     } catch (error) {
       return Err(
