@@ -1,4 +1,4 @@
-import { Schema } from "src/types";
+import { CustomSchema } from "src/types";
 
 export const dateSchema = {
   lead: {
@@ -11,4 +11,4 @@ export const dateSchema = {
       field_type: "date",
     },
   },
-} satisfies Schema;
+} satisfies CustomSchema;

@@ -1,9 +1,9 @@
 import {
   BaseFieldsSchema,
   ItemType,
-  PropertyKeys,
-  Schema,
+  BaseSchema,
   inferFieldType,
+  CustomSchema,
 } from "./schema";
 import {
   IsAnyFieldRequired,
@@ -13,16 +13,19 @@ import {
   Or,
 } from "./utils";
 
-export type Properties<ExcludeDeal extends boolean = false> = {
-  [Property in ExcludeDeal extends true
-    ? Exclude<PropertyKeys, "deal">
-    : PropertyKeys]: {
+export type CustomProperties = {
+  [Property in keyof CustomSchema]: {
+    [field: string]: inferFieldType<ItemType>;
+  };
+};
+export type BaseProperties = {
+  [Property in keyof BaseSchema]: {
     [field: string]: inferFieldType<ItemType>;
   };
 };
 
-export type inferPropertyFromSchema<S extends Schema<"">> = {
-  [Property in PropertyKeys]: {
+export type inferPropertyFromSchema<S extends CustomSchema | BaseSchema> = {
+  [Property in keyof S]: {
     [Field in keyof S[Property] as true extends (
       S[Property][Field] extends ItemType
         ? IsRequired<S[Property][Field]>
@@ -45,27 +48,33 @@ export type inferPropertyFromSchema<S extends Schema<"">> = {
   };
 };
 
-export type BaseProperties = inferPropertyFromSchema<BaseFieldsSchema>;
+type CustomPropertyBuilder<
+  CustomProperty extends CustomProperties[keyof CustomProperties]
+> = true extends Or<
+  Not<IsAnyFieldRequired<CustomProperty>>,
+  IsEmptyObject<CustomProperty>
+>
+  ? {
+      custom_fields?: CustomProperty;
+    }
+  : {
+      custom_fields: CustomProperty;
+    };
 
 export type PropertiesBuilder<
-  BaseProperties extends Properties,
-  CustomProperties extends Properties<true>,
-  CustomPropertiesDeal extends Properties = CustomProperties & {
-    deal: CustomProperties["lead"];
-  }
+  BasePropertiesT extends BaseProperties,
+  CustomPropertiesT extends CustomProperties
 > = {
-  [Property in keyof Properties]: BaseProperties[Property] &
-    (true extends Or<
-      Not<IsAnyFieldRequired<CustomPropertiesDeal[Property]>>,
-      IsEmptyObject<CustomPropertiesDeal[Property]>
-    >
-      ? {
-          custom_fields?: CustomPropertiesDeal[Property];
-        }
-      : {
-          custom_fields: CustomPropertiesDeal[Property];
-        });
+  lead: BasePropertiesT["lead"] &
+    CustomPropertyBuilder<CustomPropertiesT["lead"]>;
+  deal: BasePropertiesT["deal"] &
+    CustomPropertyBuilder<CustomPropertiesT["lead"]>;
+  person: BasePropertiesT["person"] &
+    CustomPropertyBuilder<CustomPropertiesT["person"]>;
 };
 
-export type PropertiesFromSchema<CustomSchema extends Schema> =
-  PropertiesBuilder<BaseProperties, inferPropertyFromSchema<CustomSchema>>;
+export type PropertiesFromSchema<CustomSchemaT extends CustomSchema> =
+  PropertiesBuilder<
+    inferPropertyFromSchema<BaseFieldsSchema>,
+    inferPropertyFromSchema<CustomSchemaT>
+  >;

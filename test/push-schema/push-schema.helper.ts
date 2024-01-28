@@ -1,6 +1,6 @@
 import * as R from "ramda";
 import { pushToPipedrive } from "src/push-schema";
-import { Schema } from "src/types";
+import { BaseSchema } from "src/types";
 import { emptySchema } from "./schemas";
 
 export const removeDynamicFieldsBase = R.pickBy(

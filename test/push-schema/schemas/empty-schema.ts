@@ -1,6 +1,6 @@
-import { Schema } from "src/types";
+import { CustomSchema } from "src/types";
 
 export const emptySchema = {
   lead: {},
   person: {},
-} satisfies Schema;
+} satisfies CustomSchema;

@@ -1,4 +1,4 @@
-import { Schema } from "src/types";
+import { CustomSchema } from "src/types";
 
 export const enumSchema = {
   lead: {
@@ -13,4 +13,4 @@ export const enumSchema = {
       options: ["A", "B"],
     },
   },
-} satisfies Schema;
+} satisfies CustomSchema;

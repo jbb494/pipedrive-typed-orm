@@ -1,4 +1,4 @@
-import { Schema } from "src/types";
+import { CustomSchema } from "src/types";
 
 export const monetarySchema = {
   lead: {
@@ -11,4 +11,4 @@ export const monetarySchema = {
       field_type: "monetary",
     },
   },
-} satisfies Schema;
+} satisfies CustomSchema;

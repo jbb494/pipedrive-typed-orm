@@ -1,9 +1,10 @@
 import { AxiosInstance } from "axios";
-import { PropertyKeys } from "src/types";
-import { Properties } from "src/types/properties";
+import { CustomSchema, PropertiesFromSchema } from "src/types";
 
 export const payloadPropertyToPayloadForPipedrive = async <
-  P extends Properties[PropertyKeys]
+  CustomSchemaT extends CustomSchema,
+  C extends PropertiesFromSchema<CustomSchemaT>,
+  P extends C[keyof PropertiesFromSchema<CustomSchemaT>]
 >(
   payload: P,
   pathEndpoint: "dealFields" | "personFields",
@@ -27,7 +28,7 @@ export const payloadPropertyToPayloadForPipedrive = async <
     x.reduce((acc, b) => ({ ...acc, [b[key]]: b }), {});
 
   const customFieldsPipedrive = Object.entries(custom_fields || {}).reduce(
-    (acc, [key, elem]) => ({
+    (acc, [key, elem]: any) => ({
       ...acc,
       [allCustomFields[key].key]:
         allCustomFields[key].field_type === "enum" ||

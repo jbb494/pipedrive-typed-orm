@@ -1,4 +1,4 @@
-import { Schema } from "src/types";
+import { CustomSchema } from "src/types";
 
 export const scenarioBSchema = {
   lead: {
@@ -18,4 +18,4 @@ export const scenarioBSchema = {
       field_type: "date",
     },
   },
-} as const satisfies Schema;
+} as const satisfies CustomSchema;

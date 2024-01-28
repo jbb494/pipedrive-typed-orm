@@ -1,5 +1,3 @@
-export type PropertyKeys = "lead" | "person" | "deal";
-
 export type ItemType<Options = readonly string[]> = (
   | {
       field_type: "text";
@@ -29,10 +27,15 @@ export type ItemType<Options = readonly string[]> = (
     }
 ) & { required?: boolean };
 
-export type Schema<ExcludeFields extends string = "deal"> = {
-  [property in Exclude<PropertyKeys, ExcludeFields>]?: {
-    [field: string]: ItemType;
-  };
+export type BaseSchema = {
+  lead: Record<string, ItemType>;
+  person: Record<string, ItemType>;
+  deal: Record<string, ItemType>;
+};
+
+export type CustomSchema = {
+  lead: Record<string, ItemType>;
+  person: Record<string, ItemType>;
 };
 
 export const BaseFieldsSchema = {
@@ -76,7 +79,7 @@ export const BaseFieldsSchema = {
     lost_reason: { field_type: "text" },
     label_ids: { field_type: "array" },
   },
-} as const satisfies Schema<"">;
+} as const satisfies BaseSchema;
 
 export type BaseFieldsSchema = typeof BaseFieldsSchema;
 

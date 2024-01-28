@@ -1,9 +1,8 @@
 export type {
   PipedriveOrmClient,
-  Schema,
+  BaseSchema,
   PropertiesFromSchema,
   ItemType,
-  Properties,
 } from "./types";
 
 export { createPipedriveOrmClient } from "./client/client";

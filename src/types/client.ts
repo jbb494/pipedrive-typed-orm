@@ -1,11 +1,11 @@
 import { Result } from "ga-ts";
 import { PropertiesFromSchema } from "./properties";
-import { Schema } from "./schema";
+import { CustomSchema } from "./schema";
 import { DeatilsResponse } from "./pipedrive-entities";
 
 export type PipedriveOrmClient<
-  CustomSchema extends Schema,
-  CompleteSchema = PropertiesFromSchema<CustomSchema>
+  CustomSchemaT extends CustomSchema,
+  CompleteSchema = PropertiesFromSchema<CustomSchemaT>
 > = {
   [P in Extract<keyof CompleteSchema, string> as `post${Capitalize<P>}`]: (
     p: CompleteSchema[P]

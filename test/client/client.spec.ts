@@ -156,6 +156,9 @@ describe("client", () => {
         const resultLead = await client.postLead({
           title: "Title lead",
           person_id: resultPerson.value.data.id,
+          custom_fields: {
+            carMake: "bmw",
+          },
         });
         expect(resultLead.ok).toBe(true);
 

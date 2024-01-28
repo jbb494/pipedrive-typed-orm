@@ -1,4 +1,4 @@
-import { Schema } from "src/types";
+import { CustomSchema } from "src/types";
 
 export const phoneSchema = {
   lead: {
@@ -11,4 +11,4 @@ export const phoneSchema = {
       field_type: "phone",
     },
   },
-} satisfies Schema;
+} satisfies CustomSchema;

@@ -1,11 +1,11 @@
-import { Schema } from "src/types";
+import { BaseSchema } from "src/types";
 import { Ok, Err, Result } from "ga-ts";
 import { getAllFields } from "./utils";
 
 const sleepTime = 200;
 
 const overWriteProperty = async (
-  schema: Schema,
+  schema: BaseSchema,
   endpointPath: string
 ): Promise<Result<{ added: number; removed: number }, Error>> => {
   const allFields = await getAllFields(endpointPath);
