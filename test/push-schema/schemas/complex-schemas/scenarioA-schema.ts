@@ -1,4 +1,4 @@
-import { CustomSchema } from "src/types";
+import { CustomPipelines, CustomSchema } from "src/types";
 
 export const scenarioASchema = {
   lead: {
@@ -24,3 +24,8 @@ export const scenarioASchema = {
     },
   },
 } as const satisfies CustomSchema;
+
+export const schenarioAPipelineSchema = {
+  pipelineA: [{ stageName: "Stage1" }, { stageName: "Stage2" }],
+  pipelineB: [{ stageName: "Stage3" }, { stageName: "Stage4" }],
+} as const satisfies CustomPipelines;

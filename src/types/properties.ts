@@ -4,6 +4,7 @@ import {
   BaseSchema,
   inferFieldType,
   CustomSchema,
+  CustomPipelines,
 } from "./schema";
 import {
   IsAnyFieldRequired,

@@ -18,6 +18,8 @@ import {
 import { scenarioASchema } from "test/push-schema/schemas/complex-schemas";
 import { emptySchema } from "test/push-schema/schemas";
 import { pushToPipedrive } from "src/push-schema";
+import { schenarioAPipelineSchema } from "test/push-schema/schemas/complex-schemas/scenarioA-schema";
+import { sleep } from "bun";
 
 describe("client", () => {
   const instance: AxiosInstance = createAxiosInstanceMock("scenarioASchema");
@@ -134,12 +136,15 @@ describe("client", () => {
       });
     });
     describe("Scenario A", () => {
-      const client = createPipedriveOrmClient<typeof scenarioASchema>({
+      const client = createPipedriveOrmClient<
+        typeof scenarioASchema,
+        typeof schenarioAPipelineSchema
+      >({
         apiKey: process.env.PIPEDRIVE_KEY,
       });
 
       beforeAll(async () => {
-        await pushToPipedrive(scenarioASchema);
+        await pushToPipedrive(scenarioASchema, schenarioAPipelineSchema);
       });
       afterAll(async () => {
         await pushToPipedrive(emptySchema);
@@ -165,6 +170,38 @@ describe("client", () => {
         const deleteLeadResult = await deleteLead(
           axiosInstance,
           resultLead.value.data.id
+        );
+        const deletePersonResult = await deletePerson(
+          axiosInstance,
+          resultPerson.value.data.id
+        );
+
+        expect(deleteLeadResult.ok).toBe(true);
+        expect(deletePersonResult.ok).toBe(true);
+      });
+      it("should post deal to pipeline and stage", async () => {
+        const resultPerson = await client.postPerson({
+          name: "Test Bob",
+          custom_fields: {
+            partnerName: "Maria",
+          },
+        });
+        expect(resultPerson.ok).toBe(true);
+
+        const resultDeal = await client.postDeal({
+          title: "Test Bob deal in pipeline",
+          person_id: resultPerson.value.data.id,
+          pipeline: "pipelineB",
+          stage: "Stage3",
+        });
+
+        expect(resultDeal.ok).toBe(true);
+
+        sleep(100_000);
+
+        const deleteLeadResult = await deleteLead(
+          axiosInstance,
+          resultDeal.value.data.id
         );
         const deletePersonResult = await deletePerson(
           axiosInstance,

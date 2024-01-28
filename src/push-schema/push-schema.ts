@@ -1,4 +1,4 @@
-import { BaseSchema } from "src/types";
+import { BaseSchema, CustomPipelines } from "src/types";
 import { Ok, Err, Result } from "ga-ts";
 import { getAllFields } from "./utils";
 
@@ -77,7 +77,241 @@ const overWriteProperty = async (
   return Ok({ added: addedFields.length, removed: removedFields.length });
 };
 
-export const pushToPipedrive = async (schemaOverwrite: any) => {
+const pushPipelineSchema = async (
+  pipelineSchema: CustomPipelines
+): Promise<
+  Result<
+    Record<"pipelines" | "stages", { added: number; removed: Number }>,
+    Error
+  >
+> => {
+  let q = 0;
+  /* Post pipeline with name*/
+  const postPipeline = async (name: string): Promise<{ id: number }> =>
+    (
+      (await (
+        await fetch(
+          `https://api.pipedrive.com/v1/pipelines?api_token=${process.env.PIPEDRIVE_KEY}`,
+          {
+            method: "POST",
+            body: JSON.stringify({
+              name: name,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+      ).json()) as any
+    ).data;
+
+  /* Post stage with name and pipelineId*/
+  const postStage = async (name: string, pipelineId: number): Promise<void> =>
+    (
+      (await (
+        await fetch(
+          `https://api.pipedrive.com/v1/stages?api_token=${process.env.PIPEDRIVE_KEY}`,
+          {
+            method: "POST",
+            body: JSON.stringify({
+              name: name,
+              pipeline_id: pipelineId,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+      ).json()) as any
+    ).data;
+
+  /* Get all  pipelines */
+  const getPipelines = async (): Promise<Array<{ id: number; name: string }>> =>
+    (
+      (await (
+        await fetch(
+          `https://api.pipedrive.com/v1/pipelines?api_token=${process.env.PIPEDRIVE_KEY}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+      ).json()) as any
+    ).data;
+
+  /* Get stages from one pipelines */
+  const getStages = async (
+    pipelineId: number
+  ): Promise<Array<{ name: string; id: string }>> =>
+    (
+      (await (
+        await fetch(
+          `https://api.pipedrive.com/v1/stages?api_token=${process.env.PIPEDRIVE_KEY}&pipeline_id=${pipelineId}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+      ).json()) as any
+    ).data;
+
+  /* Remove pipeliine with id */
+  const removePipeline = async (id: number): Promise<void> =>
+    (
+      (await (
+        await fetch(
+          `https://api.pipedrive.com/v1/pipelines?api_token=${process.env.PIPEDRIVE_KEY}`,
+          {
+            method: "DELETE",
+            body: JSON.stringify({
+              id,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+      ).json()) as any
+    ).data;
+
+  /* Remove stages from pipelineId */
+  const removeStages = async (ids: Array<string>): Promise<void> =>
+    (
+      (await (
+        await fetch(
+          `https://api.pipedrive.com/v1/stages?api_token=${process.env.PIPEDRIVE_KEY}`,
+          {
+            method: "DELETE",
+            body: JSON.stringify({
+              ids,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+      ).json()) as any
+    ).data;
+
+  const pipelineNamesFromSchema = Object.keys(pipelineSchema);
+
+  const pipelinesFromPipedrive = await getPipelines();
+
+  const pipelineNamesFromPipedrive = pipelinesFromPipedrive.map((p) => p.name);
+
+  const pipelinesToAdd = pipelineNamesFromSchema.filter(
+    (p) => !pipelineNamesFromPipedrive.includes(p)
+  );
+  const pipelinesToRemove = pipelinesFromPipedrive.filter(
+    (p) => !pipelineNamesFromSchema.includes(p.name)
+  );
+  const pipelinesUnchanged = pipelinesFromPipedrive.filter((p) =>
+    pipelineNamesFromSchema.includes(p.name)
+  );
+
+  let addedPipelines = 0;
+  let removedPipelines = 0;
+  let addedStages = 0;
+  let removedStages = 0;
+
+  for (const pipelineName of pipelinesToAdd) {
+    try {
+      const pipeline = await postPipeline(pipelineName);
+      addedPipelines++;
+
+      const stagesFromSchema = pipelineSchema[pipelineName];
+      for (const stage of stagesFromSchema) {
+        await postStage(stage.stageName, pipeline.id);
+        addedStages++;
+      }
+    } catch (error) {
+      return Err(
+        new Error(`Error adding pipeline or stages for ${pipelineName}`, {
+          cause: error,
+        })
+      );
+    }
+  }
+
+  /* Pipeline to be removed */
+  for (const pipeline of pipelinesToRemove) {
+    try {
+      const stagesFromPipedrive = await getStages(pipeline.id);
+      removedStages += stagesFromPipedrive.length;
+
+      await removeStages(stagesFromPipedrive.map((s) => s.id));
+      await removePipeline(pipeline.id);
+      removedPipelines++;
+    } catch (error) {
+      return Err(
+        new Error(`Error removing pipeline or stages for ${pipeline.id}`, {
+          cause: error,
+        })
+      );
+    }
+  }
+
+  /* Pipelines that were unchanged */
+  for (const pipeline of pipelinesUnchanged) {
+    try {
+      const stagesFromPipedrive = await getStages(pipeline.id);
+      const stagesFromSchema = pipelineSchema[pipeline.name];
+
+      const stagesToAdd = stagesFromSchema.filter(
+        (s) => !stagesFromPipedrive.map((p) => p.name).includes(s.stageName)
+      );
+      const stagesToRemove = stagesFromPipedrive.filter(
+        (p) => !stagesFromSchema.map((s) => s.stageName).includes(p.name)
+      );
+
+      for (const stage of stagesToAdd) {
+        await postStage(stage.stageName, pipeline.id);
+        addedStages++;
+      }
+
+      await removeStages(stagesToRemove.map((x) => x.id));
+      removedStages += stagesToRemove.length;
+    } catch (error) {
+      return Err(
+        new Error(`Error adding or removing stages for ${pipeline.name}`, {
+          cause: error,
+        })
+      );
+    }
+  }
+
+  return Ok({
+    pipelines: { added: addedPipelines, removed: removedPipelines },
+    stages: { added: addedStages, removed: removedStages },
+  });
+};
+
+type DeltaType = { added: number; removed: number };
+
+export function pushToPipedrive(
+  schemaOverwrite: any
+): Promise<Result<{ resultLead: DeltaType; resultPerson: DeltaType }, Error>>;
+export function pushToPipedrive(
+  schemaOverwrite: any,
+  pipelineSchema: any
+): Promise<
+  Result<
+    {
+      resultLead: DeltaType;
+      resultPerson: DeltaType;
+      resultPipeline: { stages: DeltaType; pipelines: DeltaType };
+    },
+    Error
+  >
+>;
+export async function pushToPipedrive(
+  schemaOverwrite: any,
+  pipelineSchema?: any
+): Promise<any> {
   const resultLead = await overWriteProperty(
     schemaOverwrite.lead,
     "dealFields"
@@ -86,11 +320,29 @@ export const pushToPipedrive = async (schemaOverwrite: any) => {
     schemaOverwrite.person,
     "personFields"
   );
+
   if (!resultLead.ok || !resultPerson.ok)
     return Err(
       new Error("Error pushing properties", {
         cause: { resultLead, resultPerson },
       })
     );
-  return Ok({ resultLead: resultLead.value, resultPerson: resultPerson.value });
-};
+  if (!pipelineSchema)
+    return Ok({
+      resultLead: resultLead.value,
+      resultPerson: resultPerson.value,
+    });
+
+  const resultPipeline = await pushPipelineSchema(pipelineSchema);
+
+  if (!resultPipeline.ok) {
+    return Err(
+      new Error("Error pushing pipelines", { cause: resultPipeline.error })
+    );
+  }
+  return Ok({
+    resultLead: resultLead.value,
+    resultPerson: resultPerson.value,
+    resultPipeline: resultPipeline.value,
+  });
+}

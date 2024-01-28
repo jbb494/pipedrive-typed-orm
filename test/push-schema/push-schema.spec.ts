@@ -10,15 +10,17 @@ import {
 import { pushToPipedrive } from "src/push-schema";
 import { getAllFields } from "src/push-schema/utils";
 import {
-  removeAllCustomFieldsPipedrive,
+  removeAllCustomFieldsAndPipelinesPipedrive,
   removeDynamicFields,
 } from "./push-schema.helper";
 
 import { oneFieldSchemas } from "./schemas";
+import { scenarioASchema } from "./schemas/complex-schemas";
+import { schenarioAPipelineSchema } from "./schemas/complex-schemas/scenarioA-schema";
 
 describe("Push schema", () => {
   beforeAll(async () => {
-    const results = await removeAllCustomFieldsPipedrive();
+    const results = await removeAllCustomFieldsAndPipelinesPipedrive();
 
     expect(results.ok).toEqual(true);
   });
@@ -26,7 +28,7 @@ describe("Push schema", () => {
     process.env.SCHEMA_PATH = undefined;
   });
   afterEach(async () => {
-    const results = await removeAllCustomFieldsPipedrive();
+    const results = await removeAllCustomFieldsAndPipelinesPipedrive();
 
     expect(results.ok).toEqual(true);
   });
@@ -105,6 +107,19 @@ describe("Push schema", () => {
       expect(resultsSecondTime.value.resultLead.removed).toEqual(1);
       expect(resultsSecondTime.value.resultPerson.added).toEqual(1);
       expect(resultsSecondTime.value.resultPerson.removed).toEqual(1);
+    });
+  });
+  describe("Pipelines", () => {
+    it.only("Should add pipelines", async () => {
+      const pipelineResults = await pushToPipedrive(
+        scenarioASchema,
+        schenarioAPipelineSchema
+      );
+
+      expect(pipelineResults.ok).toEqual(true);
+
+      expect(pipelineResults.value.resultPipeline.pipelines.added).toBe(2);
+      expect(pipelineResults.value.resultPipeline.stages.added).toBe(4);
     });
   });
 });

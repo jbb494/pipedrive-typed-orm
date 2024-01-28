@@ -1,17 +1,27 @@
 import { Result } from "ga-ts";
 import { PropertiesFromSchema } from "./properties";
-import { CustomSchema } from "./schema";
+import { CustomPipelines, CustomSchema } from "./schema";
 import { DeatilsResponse } from "./pipedrive-entities";
 
 export type PipedriveOrmClient<
   CustomSchemaT extends CustomSchema,
-  CompleteSchema = PropertiesFromSchema<CustomSchemaT>
+  CustomPipelinesT extends CustomPipelines = {},
+  CompleteSchema extends PropertiesFromSchema<CustomSchemaT> = PropertiesFromSchema<CustomSchemaT>
 > = {
-  [P in Extract<keyof CompleteSchema, string> as `post${Capitalize<P>}`]: (
-    p: CompleteSchema[P]
+  postLead: (p: CompleteSchema["lead"]) => Promise<Result<any, Error>>;
+  postDeal: <Pipeline extends keyof CustomPipelinesT>(
+    p: CompleteSchema["deal"] & {
+      pipeline?: Pipeline;
+      stage?: NonNullable<CustomPipelinesT[Pipeline][number]> extends {
+        stageName: infer Q;
+      }
+        ? Q
+        : never;
+    }
   ) => Promise<Result<any, Error>>;
+  postPerson: (p: CompleteSchema["person"]) => Promise<Result<any, Error>>;
 } & {
-  [R in Extract<keyof DeatilsResponse, string> as `get${Capitalize<R>}`]: (
-    id: number
-  ) => Promise<Result<DeatilsResponse[R], Error>>;
+  getLead: (id: number) => Promise<Result<DeatilsResponse["lead"], Error>>;
+  getDeal: (id: number) => Promise<Result<DeatilsResponse["deal"], Error>>;
+  getPerson: (id: number) => Promise<Result<DeatilsResponse["person"], Error>>;
 };

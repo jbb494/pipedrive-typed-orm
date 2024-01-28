@@ -38,6 +38,12 @@ export type CustomSchema = {
   person: Record<string, ItemType>;
 };
 
+export type CustomPipelines = {
+  [pipelineName: string]: Array<{
+    stageName: string;
+  }>;
+};
+
 export const BaseFieldsSchema = {
   lead: {
     title: {
