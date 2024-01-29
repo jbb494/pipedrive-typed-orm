@@ -1,14 +1,16 @@
-import { CustomSchema } from "src/types";
+import { SchemaFile } from "src/types";
 
 export const doubleSchema = {
-  lead: {
-    double: {
-      field_type: "double",
+  custom_fields: {
+    lead: {
+      double: {
+        field_type: "double",
+      },
+    },
+    person: {
+      double: {
+        field_type: "double",
+      },
     },
   },
-  person: {
-    double: {
-      field_type: "double",
-    },
-  },
-} satisfies CustomSchema;
+} satisfies SchemaFile;

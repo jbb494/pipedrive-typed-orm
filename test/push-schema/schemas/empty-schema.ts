@@ -1,8 +1,9 @@
-import { CustomPipelines, CustomSchema } from "src/types";
+import { SchemaFile } from "src/types";
 
 export const emptySchema = {
-  lead: {},
-  person: {},
-} satisfies CustomSchema;
-
-export const emptySchemaPipeline = {} satisfies CustomPipelines;
+  custom_fields: {
+    lead: {},
+    person: {},
+  },
+  custom_pipelines: {},
+} satisfies SchemaFile;

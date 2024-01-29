@@ -1,16 +1,18 @@
-import { CustomSchema } from "src/types";
+import { SchemaFile } from "src/types";
 
 export const setSchema = {
-  lead: {
-    set: {
-      field_type: "set",
-      options: ["A", "B"],
+  custom_fields: {
+    lead: {
+      set: {
+        field_type: "set",
+        options: ["A", "B"],
+      },
+    },
+    person: {
+      set: {
+        field_type: "set",
+        options: ["A", "B"],
+      },
     },
   },
-  person: {
-    set: {
-      field_type: "set",
-      options: ["A", "B"],
-    },
-  },
-} satisfies CustomSchema;
+} satisfies SchemaFile;

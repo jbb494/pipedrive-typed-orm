@@ -1,14 +1,16 @@
-import { CustomSchema } from "src/types";
+import { SchemaFile } from "src/types";
 
 export const textSchema = {
-  lead: {
-    text: {
-      field_type: "text",
+  custom_fields: {
+    lead: {
+      text: {
+        field_type: "text",
+      },
+    },
+    person: {
+      text: {
+        field_type: "text",
+      },
     },
   },
-  person: {
-    text: {
-      field_type: "text",
-    },
-  },
-} satisfies CustomSchema;
+} satisfies SchemaFile;

@@ -1,16 +1,18 @@
-import { CustomSchema } from "src/types";
+import { SchemaFile } from "src/types";
 
 export const enumSchema = {
-  lead: {
-    enum: {
-      field_type: "enum",
-      options: ["A", "B"],
+  custom_fields: {
+    lead: {
+      enum: {
+        field_type: "enum",
+        options: ["A", "B"],
+      },
+    },
+    person: {
+      enum: {
+        field_type: "enum",
+        options: ["A", "B"],
+      },
     },
   },
-  person: {
-    enum: {
-      field_type: "enum",
-      options: ["A", "B"],
-    },
-  },
-} satisfies CustomSchema;
+} satisfies SchemaFile;

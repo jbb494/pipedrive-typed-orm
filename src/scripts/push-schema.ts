@@ -15,7 +15,7 @@ const main = async () => {
   );
   const exportedSchema = Object.values(schema)[0];
 
-  const result = await pushToPipedrive(exportedSchema);
+  const result = await pushToPipedrive(exportedSchema as any);
 
   if (!result.ok) throw new Error("Error pushing schema to Pipedrive");
 };

@@ -16,7 +16,6 @@ import {
 
 import { oneFieldSchemas } from "./schemas";
 import { scenarioASchema } from "./schemas/complex-schemas";
-import { schenarioAPipelineSchema } from "./schemas/complex-schemas/scenarioA-schema";
 
 describe("Push schema", () => {
   beforeAll(async () => {
@@ -138,10 +137,7 @@ describe("Push schema", () => {
   });
   describe("Pipelines", () => {
     it("Should add pipelines", async () => {
-      const pipelineResults = await pushToPipedrive(
-        scenarioASchema,
-        schenarioAPipelineSchema
-      );
+      const pipelineResults = await pushToPipedrive(scenarioASchema);
 
       if (!pipelineResults.ok) {
         console.error(pipelineResults.error);

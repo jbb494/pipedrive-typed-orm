@@ -1,12 +1,16 @@
 import { Result } from "ga-ts";
 import { PropertiesFromSchema } from "./properties";
-import { CustomPipelines, CustomSchema } from "./schema";
+import { CustomPipelines, CustomSchema, SchemaFile } from "./schema";
 import { DeatilsResponse } from "./pipedrive-entities";
 
 export type PipedriveOrmClient<
-  CustomSchemaT extends CustomSchema,
-  CustomPipelinesT extends CustomPipelines = {},
-  CompleteSchema extends PropertiesFromSchema<CustomSchemaT> = PropertiesFromSchema<CustomSchemaT>
+  SchemaFileT extends SchemaFile,
+  CompleteSchema extends PropertiesFromSchema<
+    SchemaFileT["custom_fields"]
+  > = PropertiesFromSchema<SchemaFileT["custom_fields"]>,
+  CustomPipelinesT extends CustomPipelines = SchemaFileT["custom_pipelines"] extends undefined
+    ? {}
+    : NonNullable<SchemaFileT["custom_pipelines"]>
 > = {
   postLead: (p: CompleteSchema["lead"]) => Promise<Result<any, Error>>;
   postDeal: <Pipeline extends keyof CustomPipelinesT>(

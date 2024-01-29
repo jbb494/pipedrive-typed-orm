@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
 import { Err, Ok, Result } from "ga-ts";
-import { PipedriveOrmClient, CustomSchema, CustomPipelines } from "../types";
+import { PipedriveOrmClient, SchemaFile } from "../types";
 import { payloadPropertyToPayloadForPipedrive } from "./payload";
 
 export type PipedriveOrmClientConfig =
@@ -10,12 +10,9 @@ export type PipedriveOrmClientConfig =
   | {
       apiKey: string | undefined;
     };
-export const createPipedriveOrmClient = <
-  CustomSchemaT extends CustomSchema,
-  CustomPipelinesT extends CustomPipelines = {}
->(
+export const createPipedriveOrmClient = <SchemaFileT extends SchemaFile>(
   config: PipedriveOrmClientConfig
-): PipedriveOrmClient<CustomSchemaT, CustomPipelinesT> => {
+): PipedriveOrmClient<SchemaFileT> => {
   let axiosInstance;
   if (!("axiosInstance" in config)) {
     if (!("apiKey" in config)) throw new Error("Api key must be set");

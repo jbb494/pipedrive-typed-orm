@@ -38,6 +38,11 @@ export type CustomSchema = {
   person: Record<string, ItemType>;
 };
 
+export type SchemaFile = {
+  custom_fields: CustomSchema;
+  custom_pipelines?: CustomPipelines;
+};
+
 export type CustomPipelines = {
   [pipelineName: string]: Array<{
     stageName: string;

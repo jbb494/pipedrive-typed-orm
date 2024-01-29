@@ -1,11 +1,16 @@
-import { BaseSchema, CustomPipelines } from "src/types";
+import {
+  BaseSchema,
+  CustomPipelines,
+  CustomSchema,
+  SchemaFile,
+} from "src/types";
 import { Ok, Err, Result } from "ga-ts";
 import { getAllFields } from "./utils";
 
 const sleepTime = 200;
 
 const overWriteProperty = async (
-  schema: BaseSchema,
+  schema: BaseSchema[keyof BaseSchema],
   endpointPath: string
 ): Promise<Result<{ added: number; removed: number }, Error>> => {
   const allFields = await getAllFields(endpointPath);
@@ -81,7 +86,7 @@ const pushPipelineSchema = async (
   pipelineSchema: CustomPipelines
 ): Promise<
   Result<
-    Record<"pipelines" | "stages", { added: number; removed: Number }>,
+    Record<"pipelines" | "stages", { added: number; removed: number }>,
     Error
   >
 > => {
@@ -334,13 +339,7 @@ const pushPipelineSchema = async (
 
 type DeltaType = { added: number; removed: number };
 
-export function pushToPipedrive(
-  schemaOverwrite: any
-): Promise<Result<{ resultLead: DeltaType; resultPerson: DeltaType }, Error>>;
-export function pushToPipedrive(
-  schemaOverwrite: any,
-  pipelineSchema: any
-): Promise<
+export async function pushToPipedrive(schemaFile: SchemaFile): Promise<
   Result<
     {
       resultLead: DeltaType;
@@ -349,11 +348,9 @@ export function pushToPipedrive(
     },
     Error
   >
->;
-export async function pushToPipedrive(
-  schemaOverwrite: any,
-  pipelineSchema?: any
-): Promise<any> {
+> {
+  const schemaOverwrite = schemaFile.custom_fields;
+  const pipelineSchema = schemaFile.custom_pipelines;
   const resultLead = await overWriteProperty(
     schemaOverwrite.lead,
     "dealFields"
@@ -369,10 +366,21 @@ export async function pushToPipedrive(
         cause: { resultLead, resultPerson },
       })
     );
+
   if (!pipelineSchema)
     return Ok({
       resultLead: resultLead.value,
       resultPerson: resultPerson.value,
+      resultPipeline: {
+        pipelines: {
+          added: 0,
+          removed: 0,
+        },
+        stages: {
+          added: 0,
+          removed: 0,
+        },
+      },
     });
 
   const resultPipeline = await pushPipelineSchema(pipelineSchema);

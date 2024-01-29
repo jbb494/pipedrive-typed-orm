@@ -1,26 +1,16 @@
 import axios, { AxiosInstance } from "axios";
-import {
-  afterAll,
-  beforeAll,
-  describe,
-  expect,
-  it,
-  mock,
-  spyOn,
-} from "bun:test";
+import { afterAll, beforeAll, describe, expect, it, spyOn } from "bun:test";
 import { createPipedriveOrmClient } from "src";
 import { PipedriveOrmClientConfig } from "src/client";
+import { pushToPipedrive } from "src/push-schema";
+import { emptySchema } from "test/push-schema/schemas";
+import { scenarioASchema } from "test/push-schema/schemas/complex-schemas";
 import {
   createAxiosInstanceMock,
   deleteDeal,
   deleteLead,
   deletePerson,
 } from "./helper-client.spec";
-import { scenarioASchema } from "test/push-schema/schemas/complex-schemas";
-import { emptySchema } from "test/push-schema/schemas";
-import { pushToPipedrive } from "src/push-schema";
-import { schenarioAPipelineSchema } from "test/push-schema/schemas/complex-schemas/scenarioA-schema";
-import { sleep } from "bun";
 
 describe("client", () => {
   const instance: AxiosInstance = createAxiosInstanceMock("scenarioASchema");
@@ -146,15 +136,12 @@ describe("client", () => {
       });
     });
     describe("Scenario A", () => {
-      const client = createPipedriveOrmClient<
-        typeof scenarioASchema,
-        typeof schenarioAPipelineSchema
-      >({
+      const client = createPipedriveOrmClient<typeof scenarioASchema>({
         apiKey: process.env.PIPEDRIVE_KEY,
       });
 
       beforeAll(async () => {
-        await pushToPipedrive(scenarioASchema, schenarioAPipelineSchema);
+        await pushToPipedrive(scenarioASchema);
       });
       afterAll(async () => {
         await pushToPipedrive(emptySchema);
