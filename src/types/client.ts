@@ -14,7 +14,7 @@ export type PipedriveOrmClient<
 > = {
   postLead: (p: CompleteSchema["lead"]) => Promise<Result<any, Error>>;
   postDeal: <Pipeline extends keyof CustomPipelinesT>(
-    p: CompleteSchema["deal"] & {
+    p: Omit<CompleteSchema["deal"], "pipeline" | "stage"> & {
       pipeline?: Pipeline;
       stage?: NonNullable<CustomPipelinesT[Pipeline][number]> extends {
         stageName: infer Q;

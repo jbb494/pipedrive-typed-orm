@@ -81,8 +81,12 @@ export const BaseFieldsSchema = {
     user_id: { field_type: "double" },
     person_id: { field_type: "double", required: true },
     org_id: { field_type: "double" },
-    pipeline_id: { field_type: "double" },
-    stage_id: { field_type: "double" },
+
+    // pipeline_id: { field_type: "double" },
+    pipeline: { field_type: "text" },
+    // stage_id: { field_type: "double" },
+    stage: { field_type: "text" },
+
     status: { field_type: "text" },
     add_time: { field_type: "text" },
     expected_close_date: { field_type: "text" },

@@ -1,6 +1,6 @@
 {
   "name": "pipedrive-typed-orm",
-  "version": "0.0.30",
+  "version": "0.0.33",
   "license": "MIT",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -12,7 +12,6 @@
     "test:client": "bun test test/client",
     "test:push-schema": "bun test test/push-schema --timeout 10000",
     "mock:generate": "bun scripts/mock-generator.ts",
-    "push-schema": "bun scripts/push-schema.ts",
     "prepublishOnly": "bun run build"
   },
   "bin": {

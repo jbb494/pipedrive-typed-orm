@@ -126,6 +126,7 @@ const Lead = Properties["lead"];
 ### Pushing Schema
 
 - [x] FEATURE - Implementing almost all field_types (text, phone, double, date, monetary, enum, set)
+- [ ] FEATURE - Implement products
 - [ ] OPTIMIZATION - Make deletions in bulk
 - [ ] FEATURE - Schema diff option (no pushing to pipedrive)
 - [ ] FEATURE - Schema pull from pipedrive
@@ -138,6 +139,7 @@ const Lead = Properties["lead"];
 - [ ] FEATURE - Posting organizations
 - [ ] FEATURE - Posting pipelines
 - [ ] FEATURE - Implement Get request
+- [ ] FEATURE - Should natively support multiple schemas for different pipelines (for visibility purposes)
 - [ ] REFACTOR - createClient shouldnt work with env variables
 
 ## Caveats

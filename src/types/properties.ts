@@ -5,6 +5,7 @@ import {
   inferFieldType,
   CustomSchema,
   CustomPipelines,
+  SchemaFile,
 } from "./schema";
 import {
   IsAnyFieldRequired,
