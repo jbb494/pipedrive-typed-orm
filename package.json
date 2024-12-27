@@ -1,6 +1,6 @@
 {
   "name": "pipedrive-typed-orm",
-  "version": "0.0.33",
+  "version": "0.0.36",
   "license": "MIT",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -46,6 +46,6 @@
   "dependencies": {
     "axios": "1.7.9",
     "ramda": "^0.29.1",
-    "ga-ts": "^0.1.2"
+    "ga-ts": "0.2.3-dev"
   }
 }
